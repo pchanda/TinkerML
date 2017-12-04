@@ -29,4 +29,4 @@ Then \\(P(x_5 \\| x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 \\| x_2
 
 The conditional probability \\(P(x_i|N(x_i)) is given by:
  
-\\( P(x_i \\| N(x_i)) = f \\)
+\\( P(x_i \vert N(x_i)) = f \\)
