@@ -15,11 +15,18 @@ To make notations simple, lets write \\( P(X_i=x_i)\\) as \\(P(x_i)\\), and the 
 \\(\textbf{X}\\) is called a **Markov Random Field** (MRF) on \\(S\\) with respect to a neighborhood system \\(N\\) iff the following holds:
  
  - \\(P( \textbf{x} ) > 0\\) for all \\( \textbf{x} \in \Xi \\) where \\(\Xi\\) has all possible configurations assignment values of the \\(n\\) random variables \\(X_1,X_2,...,X_n \\),and, 
+
+$$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$ called Markovianity property.
+
+$$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
+
 - $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$ called Markovianity property.
 
 e.g for the network or graph below:
 
-The neighbors of \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\}\\). Then \\(P(x_5|x_1,x_2,x_3,x_4,x_6,x_7,x_8,x_9)=P(x_5|x_2,x_4,x_8,x_6)\\).
+The neighbors of \\(x_5\\) arre \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\}\\). 
+
+Then \\(P(x_5|x_1,x_2,x_3,x_4,x_6,x_7,x_8,x_9)=P(x_5|x_2,x_4,x_8,x_6)\\).
 
 Testing....
 -$$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
