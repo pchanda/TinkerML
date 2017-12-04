@@ -21,9 +21,6 @@ $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
 
 e.g for the network or graph below:
 
-![an image alt text]({{ site.baseurl }}/images/Lattice.png "A small network")
-
-bla bla 
 ![an image alt text]({{ site.baseurl }}/images/Lattice.png "A small network"){:height="50%" width="50%"}
 
 
