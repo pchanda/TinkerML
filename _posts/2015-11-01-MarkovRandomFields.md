@@ -21,7 +21,7 @@ $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
 
 e.g for the network or graph below:
 
-![an image alt text]({{ site.baseurl }}/images/jekyll-logo.png "an image title")
+![an image alt text]({{ site.baseurl }}/images/Lattice.png "A small network")
 
 The neighbors of node \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\} \\). 
 
