@@ -15,7 +15,9 @@ To make notations simple, lets write \\( P(X_i=x_i)\\) as \\(P(x_i)\\), and the 
 \\(\textbf{X}\\) is called a **Markov Random Field** (MRF) on \\(S\\) with respect to a neighborhood system \\(N\\) iff the following holds:
  
  - \\(P( \textbf{x} ) > 0\\) for all \\( \textbf{x} \in \Xi \\) where \\(\Xi\\) has all possible configurations assignment values of the \\(n\\) random variables \\(X_1,X_2,...,X_n \\), and, 
-- \\( P(x_i|\mathbf{x}_{S-\{i\}}) = P(x_i|N(x_i)) \\)
+
+
+Hello \\( P(x_i|\mathbf{x}_{S-\{i\}}) = P(x_i|N(x_i)) \\)
 
 
 Testing....
