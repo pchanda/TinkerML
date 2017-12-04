@@ -4,7 +4,7 @@ title: Markov Random Fields (MRF)
 ---
 
 A short intro to MRFs. Let \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) be a family of random variables defined on a set \\( S=\\{1,2,...,n\\} \\) of sites. 
-As an example, \\( S \\) can represent the pixel positions of an image in a \\( m \times m \\) 2-D lattice \\( \\{(i,j) | 1 \leq i,j \leq m\\} \\) where the double indexing can be recoded to univariate indexing by \\( (i,j) \rightarrow (i-1)m+j \\) so that \\( S=\\{ 1,2,...,m^2 \\} \\). 
+As an example, \\( S \\) can represent the pixel positions of an \\( m \times m \\) image in a  2-D lattice \\( \\{(i,j) | 1 \leq i,j \leq m\\} \\) where the double indexing can be recoded to univariate indexing by \\( (i,j) \rightarrow (i-1)m+j \\) so that \\( S=\\{ 1,2,...,m^2 \\} \\). 
 
 The family \\( X \\) is called a **Random Field**. 
 
@@ -21,7 +21,7 @@ $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
 
 e.g for the network or graph below:
 
-![an image alt text]({{ site.baseurl }}/images/Lattice.png "A small network"){:height="50%" width="50%"}
+![an image alt text]({{ site.baseurl }}/images/Lattice.png "A small network"){:height="25%" width="25%"}
 
 
 The neighbors of node \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\} \\). 
@@ -31,3 +31,5 @@ Then \\(P(x_5 \vert x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 \vert
 The conditional probability of a node given its neighbors \\(P(x_i \vert N(x_i))\\) is given by:
  
 \\( P(x_i \vert N(x_i)) = \dfrac {P(x_i,N(x_i))} {\Sigma_{x_i \in L} P(x_i,N(x_i)) } \\).
+
+## References
