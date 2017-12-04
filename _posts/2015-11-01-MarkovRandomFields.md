@@ -23,10 +23,10 @@ e.g for the network or graph below:
 
 ![an image alt text]({{ site.baseurl }}/images/jekyll-logo.png "an image title")
 
-The neighbors of \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\} \\). 
+The neighbors of node \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\} \\). 
 
 Then \\(P(x_5 \vert x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 \vert x_2, x_4, x_8, x_6) \\).
 
-The conditional probability \\(P(x_i \vert N(x_i)) is given by:
+The conditional probability of a node given its neighbors \\(P(x_i \vert N(x_i))\\) is given by:
  
-\\( P(x_i \vert N(x_i)) = \dfrac a b \\)
+\\( P(x_i \vert N(x_i)) = \dfrac {P(x_i,N(x_i))} {\Sigma_{x_i \in L} P(x_i,N(x_i)) } \\).
