@@ -10,14 +10,15 @@ The family \\( X \\) is called a **Random Field**.
 
 Assume each \\( X_i \\) takes values \\( x_i \in L\\). \\( L \\) can be some label set. 
 E.g if \\( L =\\{0,1\\} \\), then \\(P(X_1=x_1,X_2=x_2)=P(X_1=0,X_2=1)\\) when \\(x_1\\) is 0 and \\(x_2\\) is 1.  
-To make notations simple, lets write \\( P(X_i=x_i)\\) as \\(P(x_i)\\), and the joint probability \\( P(X_1=x_1,...,X_n=x_n) \\equiv P(x_1,...,x_n) \\equiv  P(x) \\).
+To make notations simple, lets write \\( P(X_i=x_i)\\) as \\(P(x_i)\\), and the joint probability \\( P(X_1=x_1,...,X_n=x_n) \\equiv P(x_1,...,x_n) \\equiv  P(\textbf{x}) \\).
 
 $$ P(X_1=x_1,...,X_n=x_n) \\equiv P(x_1,...,x_n) \\equiv  P(x) $$
 
-\\(X\\) is called a **Markov Random Field**(MRF) on \\(S\\) with respect to a neighborhood system \\(N\\) iff the following holds:
+\\(\textbf{X}\\) is called a **Markov Random Field** (MRF) on \\(S\\) with respect to a neighborhood system \\(N\\) iff the following holds:
  
- - \\(P(x) > 0\\) for all \\(x \in X\\) where \\(X\\) has all possible configurations assignment values of the \\(n\\) random variables \\(X_1,X_2,...,X_n \\).
+ - \\(P( \textbf{x} ) > 0\\) for all \\( \textbf{x} \in \Xi \\) where \\(\Xi\\) has all possible configurations assignment values of the \\(n\\) random variables \\(X_1,X_2,...,X_n \\).
 - $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
+- \\( $$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$ \\)
 - $$(\textbf{x})_{S-\{i\}}$$
 
 $$\Xi$$  
