@@ -25,17 +25,8 @@ e.g for the network or graph below:
 
 The neighbors of \\(x_5\\) are \\(x_2,x_4,x_8,x_6\\). So \\(N(x_5)=\\{x_2,x_4,x_8,x_6\\} \\). 
 
-Then \\(P(x_5 | x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 | x_2, x_4, x_8, x_6) \\).
+Then \\(P(x_5 , x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 , x_2, x_4, x_8, x_6) \\).
 
 The conditional probability \\(P(x_i|N(x_i)) is given by:
  
 \\( P(x_i|N(x_i)) = \frac{a}{b} \\)
-
-
-Testing....
--$$P(x_i|\textbf{x}_{S-\{i\}}) = P(x_i|N(x_i))$$
-- $$(\textbf{x})_{S-\{i\}}$$
- 
-$$\Xi$$  
-
-Hello
