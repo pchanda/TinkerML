@@ -59,8 +59,8 @@ permalink: /:title/
 version: v1.2.0
 
 # Build settings
-#markdown: kramdown
-markdown: redcarpet
+markdown: kramdown
+#markdown: redcarpet
 highlighter: rouge
 paginate: 5
 
