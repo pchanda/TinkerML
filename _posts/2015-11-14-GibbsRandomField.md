@@ -37,10 +37,22 @@ Therefore,
 $$
 \begin{align}
 P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \} \\\\
-& = \dfrac{1}{Z}\exp \{ -\sum\limits_{c} \phi_{c}(\textbf{x}) \} \\\\
-& = \dfrac{1}{Z} \prod\limits_{c} \exp \{ -\phi_{c}(\textbf{x}) \} 
+& = \dfrac{1}{Z}\exp \{ -\sum\limits_{c \in C} \phi_{c}(\textbf{x}) \} \\\\
+& = \dfrac{1}{Z} \prod\limits_{c \in C} \exp \{ -\phi_{c}(\textbf{x}) \} 
 \end{align}
 $$
+
+Each term \\( \exp \{ -\phi_{c}(.) \} \\) must be positive, but may not sum to 1, hence we need the partition function $$Z$$ make this a valid probability distribution. 
+
+Also, for any Gibbs Field, there is a subset $$\hat C$$ of $$C$$ consisting of only maximal cliques which are not proper subsets of any other cliques. We can write a clique potential for each maximal clique that is the product of the exponentials of potentials of all its sub-cliques. In this way, we can write the joint probability using only the potentials of the maximal cliques:
+
+$$ P( \textbf{x} ) = \dfrac{1}{Z} \prod\limits_{c \in \hat C} \exp \{ -\phi_{c}(\textbf{x}) \} $$
+
+with the normalizing factor Z defined as,
+
+$$ Z = \sum\limits_{\textbf{x}} \prod\limits_{c \in \hat C} \exp \{ -\phi_{c}(\textbf{x}) \}  $$.
+
+Note that this is defined over all maximal cliques, not just the single largest one. We usually take these potentials to be only functions over the maximal cliques.
 
 Ok, the GRF math is pretty boring, whats its connection with a MRF ? It turns out that GRF and MRF are connected by the Hammersley-Clifford theorem which states that the set of random variable $$\textbf{X}$$ is an MRF wrt a neighborhood system iff $$\textbf{X}$$ is a GRF wrt the same neighborhood system. 
 
