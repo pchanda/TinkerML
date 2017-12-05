@@ -54,7 +54,13 @@ $$ Z = \sum\limits_{\textbf{x}} \prod\limits_{c \in \hat C} \exp \{ -\phi_{c}(\t
 
 Note that this is defined over all maximal cliques, not just the single largest one. We usually take these potentials to be only functions over the maximal cliques.
 
-Ok, the GRF math is pretty boring, whats its connection with a MRF ? It turns out that GRF and MRF are connected by the Hammersley-Clifford theorem which states that the set of random variable $$\textbf{X}$$ is an MRF wrt a neighborhood system iff $$\textbf{X}$$ is a GRF wrt the same neighborhood system. 
+Clearly, the Gaussian distribution is a special member of this Gibbs distribution family.
 
-Bye, the rest of it comes tomorrow :-)
+A GRF is said to be homogeneous if is independent of the relative position of the clique $$c$$ in $$S$$. It is
+said to be isotropic if is independent of the orientation of $$c$$, i.e, $$ \phi_{c}(x_1,x_2) =  \phi_{c}(x_2,x_1)$$. It is considerably simpler to specify a GRF distribution if it is homogeneous or isotropic than one without such properties. The homogeneity is assumed
+in most MRF vision models for mathematical and computational convenience. The isotropy is a property of direction-independent regions.
+
+Ok, the GRF math is pretty boring, whats its connection with a MRF ? An MRF is characterized by its local property (Markovianity) whereas a GRF is characterized by its global property (the Gibbs distribution characterized by all possible cliques). It turns out that GRF and MRF are connected by the Hammersley-Clifford theorem which states that the set of random variable $$\textbf{X}$$ is an MRF wrt a neighborhood system iff $$\textbf{X}$$ is a GRF wrt the same neighborhood system. 
+
+Bye, the rest of it comes later, already wrote too much :-)
 
