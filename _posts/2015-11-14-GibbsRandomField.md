@@ -16,7 +16,17 @@ $$T$$ is the temperature, we will not worry about it here, just set it to 1.
 
 $$U(\textbf{x})$$ is called the energy function defined using cliques that obey the neighborhood system. 
 
-A clique is just a set of nodes (random variables) in a graph that are all connected (neighbors) with each other. Let $$C_i$$ be the set of all cliques of size $$i$$. So $$ C_1 = \{(i) \vert i \in S\} $$.  And So $$ C_2 = \{(i,j) \vert i \in S, j \in N_i \} $$, $$N_i=\{all neighbors of i\} $$.
+A clique is just a set of nodes (random variables) in a graph that are all connected (neighbors) with each other. Let $$C_i$$ be the set of all cliques of size $$i$$. 
+
+So $$ C_1 = \{(i) \vert i \in S\} $$;  
+
+$$ C_2 = \{(i,j) \vert i \in S, j \in N_i \} $$, $$N_i=\{$$ all neighbors of $$ i\} $$;
+
+$$ C_3 = \{(i,j,k) \vert i,j,k \in S, i,j,k $$ are all  neighbors of each other $$ \} $$;
+
+And so on ...
+
+Thus $$ C = \{ C_1 \cup C_2 \cup ... $$ higher order cliques $$\}$$. 
 
 
 
