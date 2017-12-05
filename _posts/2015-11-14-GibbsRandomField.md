@@ -10,11 +10,13 @@ $$ P( \textbf{x} ) = P(x_1,x_2,...,x_n) = \dfrac{1}{Z}\exp\{ \dfrac{1}{T} U(\tex
 
 Here, $$Z$$ is a normalizing constant,also called a partition function whose job is to ensure $$ P( \textbf{x} ) $$ is between 0 and 1, obtained by summing all possible configurations of value assignment to the $$n$$ random variables,
 
-$$ Z = \Sigma \limits_{\textbf{x}} \exp\{ \dfrac{1}{T} U(\textbf{x}) \} $$.
+$$ Z = \Sigma \limits_x \exp\{ \dfrac{1}{T} U(\textbf{x}) \} $$.
+
+Hello
 
 $$T$$ is the temperature, we will not worry about it here, just set it to 1. 
 
-$$U\textbf{x}$$ is called the energy function defined using cliques that obey the neighborhood system. A clique is just a set of nodes (random variables) in a graph that are all connected (neighbors) with each other.  
+$$U(\textbf{x})$$ is called the energy function defined using cliques that obey the neighborhood system. A clique is just a set of nodes (random variables) in a graph that are all connected (neighbors) with each other.  
 
 
 Let \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) be a family of random variables defined on a set \\( S=\\{1,2,...,n\\} \\) of sites. 
