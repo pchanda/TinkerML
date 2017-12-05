@@ -10,7 +10,7 @@ $$ P( \textbf{x} ) = P(x_1,x_2,...,x_n) = \dfrac{1}{Z}\exp\{ \dfrac{1}{T} U(\tex
 
 Here, $$Z$$ is a normalizing constant,also called a partition function whose job is to ensure $$ P( \textbf{x} ) $$ is between 0 and 1, obtained by summing all possible configurations of value assignment to the $$n$$ random variables,
 
-$$ Z = \Sigma \limits_x \exp\{ \dfrac{1}{T} U(\textbf{x}) \} $$.
+$$ Z = \sum\limits_x \{ x \} $$.
 
 Hello
 
