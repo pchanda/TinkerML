@@ -30,8 +30,17 @@ Thus $$ C = \{ C_1 \cup C_2 \cup C_3 ... $$ higher order cliques $$\}$$.
 
 Now define something called a potential function $$\phi(...) $$ for each of the cliques. So the energy function $$ U(\textbf{x})$$ is represented as a sum of clique potentials over cliques of many sizes,
 
-$$ U(\textbf{x}) = \sum\limits_{c} \phi_{c}(\textbf{x}) $$
+$$ U(\textbf{x}) = \sum\limits_{c \in C} \phi_{c}(\textbf{x}) $$
  = (sum of potentials of all cliques of size 1) + (sum of potentials of all cliques of size 2) + ... 
 
-Therefore, $$ P( \textbf{x} ) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ \sum\limits_{c} \phi_{c}(\textbf{x}) \} $$
+Therefore, 
+\begin{align}
+P( \textbf{x} ) & = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} \\
+& = \dfrac{1}{Z}\exp\{ -\sum\limits_{c} \phi_{c}(\textbf{x}) \} \\
+& = \dfrac{1}{Z} -\prod\limits_{c} \exp \{ -\phi_{c}(\textbf{x}) \} 
+\end{align}
+
+Ok.
+
+Done
 
