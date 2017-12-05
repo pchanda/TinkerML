@@ -35,9 +35,9 @@ $$ U(\textbf{x}) = \sum\limits_{c \in C} \phi_{c}(\textbf{x}) $$
 
 Therefore, 
 \begin{align}
-P( \textbf{x} ) & = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} \\
-& = \dfrac{1}{Z}\exp\{ -\sum\limits_{c} \phi_{c}(\textbf{x}) \} \\
-& = \dfrac{1}{Z} -\prod\limits_{c} \exp \{ -\phi_{c}(\textbf{x}) \} 
+P( \textbf{x} ) & = \dfrac{1}{Z} \exp \\{ -U(\textbf{x}) \\} \\
+& = \dfrac{1}{Z}\exp \\{ -\sum\limits_{c} \phi_{c}(\textbf{x}) \\} \\
+& = \dfrac{1}{Z} -\prod\limits_{c} \exp \\{ -\phi_{c}(\textbf{x}) \\} 
 \end{align}
 
 Ok, the GRF math is pretty boring, whats its connection with a MRF ? It turns out that GRF and MRF are connected by the Hammersley-Clifford theorem which states that the set of random variable $$\textbf{X}$$ is an MRF wrt a neighborhood system iff $$\textbf{X}$$ is a GRF wrt the same neighborhood system. 
