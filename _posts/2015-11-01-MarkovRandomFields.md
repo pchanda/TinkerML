@@ -30,15 +30,13 @@ Then \\(P(x_5 \vert x_1, x_2, x_3, x_4, x_6, x_7, x_8, x_9)\\) = \\( P(x_5 \vert
 
 The conditional probability of a node given its neighbors \\(P(x_i \vert N(x_i))\\) is given by:
 
-\\( P(x_i \vert N(x_i)) = \dfrac {P(x_i,N(x_i))} {\Sigma_{x_i \in L} P(x_i,N(x_i)) } \\).
-
-
 $$
 \begin{align}
 P(x_i \vert N(x_i)) & = \dfrac {P(x_i,N(x_i))} {\Sigma_{x_i \in L} P(x_i,N(x_i)) } \\\\
 & = \dfrac {P(x_i,N(x_i))} {P(X_i=0,N(x_i))+P(X_i=1,N(x_i)) }
 \end{align}
 $$
+
 when, for example, \\( L =\\{0,1\\} \\).
 
 ## References
