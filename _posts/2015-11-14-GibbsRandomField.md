@@ -12,5 +12,10 @@ Here, $$Z$$ is a normalizing constant,also called a partition function whose job
 
 $$ Z = \Sigma \limits_{\textbf{x}} \exp\{ \dfrac{1}{T} U(\textbf{x}) \} $$.
 
+$$T$$ is the temperature, we will not worry about it here, just set it to 1. 
+
+$$U\textbf{x}$$ is called the energy function defined using cliques that obey the neighborhood system. A clique is just a set of nodes (random variables) in a graph that are all connected (neighbors) with each other.  
+
+
 Let \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) be a family of random variables defined on a set \\( S=\\{1,2,...,n\\} \\) of sites. 
 As an example, \\( S \\) can represent the pixel positions of an \\( m \times m \\) image in a  2-D lattice \\( \\{(i,j) | 1 \leq i,j \leq m\\} \\) where the double indexing can be recoded to univariate indexing by \\( (i,j) \rightarrow (i-1)m+j \\) so that \\( S=\\{ 1,2,...,m^2 \\} \\). 
