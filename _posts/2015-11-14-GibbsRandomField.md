@@ -28,9 +28,10 @@ And so on ...
 
 Thus $$ C = \{ C_1 \cup C_2 \cup C_3 ... $$ higher order cliques $$\}$$. 
 
-Now define something called a potential function $$\phi(...) $$ for each of the cliques. 
+Now define something called a potential function $$\phi(...) $$ for each of the cliques. So the energy function $$ U(\textbf{x})$$ is represented as a sum of clique potentials over cliques of many sizes,
+
+$$ U(\textbf[x}) = \sum\limits_{c \in C} \phi_c(\textbf{x})$$
 
 
 
-Let \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) be a family of random variables defined on a set \\( S=\\{1,2,...,n\\} \\) of sites. 
-As an example, \\( S \\) can represent the pixel positions of an \\( m \times m \\) image in a  2-D lattice \\( \\{(i,j) | 1 \leq i,j \leq m\\} \\) where the double indexing can be recoded to univariate indexing by \\( (i,j) \rightarrow (i-1)m+j \\) so that \\( S=\\{ 1,2,...,m^2 \\} \\). 
+
