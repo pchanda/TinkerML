@@ -19,3 +19,5 @@ Assume a clumpy model with higher correlations between a $$X_i$$ with its neighb
 $$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\} $$
 
 Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise, i.e,$$y_i = x_i + \epsilon_i$$ where $$\epsilon_i$$ is $$N(0,\sigma^2)$$ iid.
+
+So, 
