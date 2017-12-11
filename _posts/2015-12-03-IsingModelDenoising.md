@@ -16,6 +16,6 @@ So we have \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) as our hidden random vari
 
 Assume a clumpy model with higher correlations between a $$X_i$$ with its neighbors, say $$X_j$$ than between $$X_i$$ and $$Y_i$$. We want to infer $$X$$ that maximizes the probability $$P(X \vert Y) = \dfrac{P(Y \vert X)P(X)}{P(Y)}$$. Here, $$P(Y \vert X)$$ is the liklihood and $$P(X)$$ is the prior. Now, we will use the [Ising model](https://en.wikipedia.org/wiki/Ising_model) as the prior $$P(X)$$, as
 
-$$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha -\sum\limits_{\{i\} \in C_1} x_i + \beta  -\sum\limits_{\{i,j\} \in C_1} x_i x_j\} $$
+$$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\} $$
 
-Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise.
+Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise, i.e,$$y_i = x_i + \epsilon_i$$ where $$\epsilon_i$$ is $$N(0,\sigma^2)$$ iid.
