@@ -10,7 +10,10 @@ Noise-Free Image           |  Noisy Image
 ![an image alt text]({{ site.baseurl }}/images/bayes_bw.jpg "Example image"){:height="50%" width="50%"}  |  ![an image alt text]({{ site.baseurl }}/images/bayes_bw_noisy.jpg "Noisy image"){:height="50%" width="50%"}
 
 
-Consider the figure of an undirected graphical model representing a Markov random field for image de-noising (taken from [Bishop's book](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjUldT-8oLYAhWhTN8KHVBACEAQFggxMAE&url=http%3A%2F%2Fwww.springer.com%2Fus%2Fbook%2F9780387310732&usg=AOvVaw1GPxHb_WuZJZR2dfgJZpJT "Pattern Recognition and Machine Learning").
-$$x_i$$ is a binary variable denoting the state of pixel $$i$$ in the unknown noise-free image, and $$y_i$$ denotes the corresponding value of pixel $$i$$ in the observed noisy image.
+Consider the figure of an undirected graphical model representing a Markov random field for image de-noising (taken from [Bishop's book](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjUldT-8oLYAhWhTN8KHVBACEAQFggxMAE&url=http%3A%2F%2Fwww.springer.com%2Fus%2Fbook%2F9780387310732&usg=AOvVaw1GPxHb_WuZJZR2dfgJZpJT "Pattern Recognition and Machine Learning"). $$x_i$$ is a binary variable denoting the state of pixel $$i$$ in the unknown noise-free image, and $$y_i$$ denotes the corresponding value of pixel $$i$$ in the observed noisy image. 
+
+So we have \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image) on set \\( S=\\{1,2,...,n\\} \\) of pixels (or sites). And, \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image) on set \\( S=\\{1,2,...,n\\} \\) of pixels (or sites). And,  \\( \textbf{Y} =\\{ Y_1,Y_2,...,Y_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image). 
+
+Assume a clumpy model with higher correlations between a $$X_i$$ with its neighbors, say $$X_j$$ than between $$X_i$$ and $$Y_i$$. We want to infer $$X$$ that maximizes the probability $$P(X \vert Y) = \dfrac{P(Y \vert X)P(X)}{P(Y)}$$  
 
 
