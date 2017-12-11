@@ -14,6 +14,8 @@ Consider the figure of an undirected graphical model representing a Markov rando
 
 So we have \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image) on set \\( S=\\{1,2,...,n\\} \\) of pixels (or sites). And, \\( \textbf{X} =\\{ X_1,X_2,...,X_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image) on set \\( S=\\{1,2,...,n\\} \\) of pixels (or sites). And,  \\( \textbf{Y} =\\{ Y_1,Y_2,...,Y_n \\} \\) as our hidden random variables (corresponding to the unobserved noise-free image). 
 
-Assume a clumpy model with higher correlations between a $$X_i$$ with its neighbors, say $$X_j$$ than between $$X_i$$ and $$Y_i$$. We want to infer $$X$$ that maximizes the probability $$P(X \vert Y) = \dfrac{P(Y \vert X)P(X)}{P(Y)}$$  
+Assume a clumpy model with higher correlations between a $$X_i$$ with its neighbors, say $$X_j$$ than between $$X_i$$ and $$Y_i$$. We want to infer $$X$$ that maximizes the probability $$P(X \vert Y) = \dfrac{P(Y \vert X)P(X)}{P(Y)}$$. Here, $$P(Y \vert X)$$ is the liklihood and $$P(X)$$ is the prior. Now, we will use the [Ising model](https://en.wikipedia.org/wiki/Ising_model) as the prior $$P(X)$$, as
+
+$$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha -\sum\limits_{\{i\} \in C_1} x_i + \beta  -\sum\limits_{\{i,j\} \in C_1} x_i x_j\} $$
 
 
