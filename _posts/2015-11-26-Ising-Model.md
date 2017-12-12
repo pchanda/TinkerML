@@ -32,6 +32,8 @@ Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to com
 
 Here $$ x \prime \hat x \acute x \pi $$
 
+$$ \textbf{x} \prime $$
+
 ## Sampling by Gibb's method
 
 something more...
