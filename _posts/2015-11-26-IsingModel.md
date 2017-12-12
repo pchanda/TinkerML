@@ -18,6 +18,10 @@ $$
 
 Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to compute the partition function $$Z$$. 
 
-##Sampling by Metropolis-Hastings method
+## Sampling by Metropolis-Hastings method
+
+something more...
+
+## Sampling by Gibb's method
 
 something more...
