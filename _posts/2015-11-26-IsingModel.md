@@ -6,19 +6,14 @@ Also assume that our label set $$L$$ is binary, $$L \in \{-1,1\}$$. To further s
 
 Further simplify, $$\alpha_i = \alpha$$ $$\forall i$$, $$\beta_{i,j} = \beta$$ $$\forall i,j $$, and $$\delta(x_i,x_j) = -x_i x_j$$. This gives and example of an [Ising Model](https://en.wikipedia.org/wiki/Ising_model). Then,
 
+Hello
+
 $$P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
 
 $$U( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
 
 $$\dfrac{1}{Z}\exp \{ -\alpha \sum_{\{i\}\in C_1} x_i  + \beta \sum_{\{i,j\}\in C_2} x_i x_j  \}$$
 
-$$
-\begin{align}
-P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \} \\\\
-& = \dfrac{1}{Z}\exp \{ -\alpha \sum_{\{i\}\in C_1} x_i  + \beta \sum_{\{i,j\}\in C_2} x_i x_j  \} \\\\
-& = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}   
-\end{align}
-$$
 
 $$
 \begin{align}
