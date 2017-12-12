@@ -14,9 +14,9 @@ $$\alpha$$
 
 $$\dfrac{1}{Z}\exp \{ -\alpha \sum_{\{i\}\in C_1} x_i  + \beta \sum_{\{i,j\}\in C_2} x_i x_j  \}$$
 
-$$P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
+$$P( \textbf{x} ) = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
 
-$$U( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
+$$U( \textbf{x} ) = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
 
 
 $$
