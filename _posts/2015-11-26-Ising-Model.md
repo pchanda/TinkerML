@@ -26,7 +26,7 @@ Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to com
 
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
 2. Select a random $$x_k$$. 
-3. Produce a new sample $$\textbf{\acute x} = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
+3. Produce a new sample $$\textbf{\acute{x}} = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
 
 ## Sampling by Gibb's method
 
