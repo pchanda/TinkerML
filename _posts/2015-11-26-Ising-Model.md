@@ -28,10 +28,10 @@ Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to com
 2. Select a random $$x_k$$. 
 3. Produce a new sample $$\textbf{x} \prime = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
 4. Compute the acceptance probability of the new sample $$\textbf{x} \prime $$ as 
-    $$A(\textbf{x} \prime \vert \textbf{x}) = min $$\{ 1, \dfrac{\pi(\textbf{x} \prime g(\textbf{x} \vert \textbf{x} \prime)}{\pi(\textbf{x})g(\textbf{x} \prime \vert \textbf{x}) } \} $$ 
+    $$A(\textbf{x} \prime \vert \textbf{x}) = min $$\{ 1, \dfrac{ \pi (\textbf{x} \prime g(\textbf{x} \vert \textbf{x} \prime )}{ \pi (\textbf{x}) g(\textbf{x} \prime \vert \textbf{x} ) } \} $$ 
 
 
-$$ \textbf{x} \prime $$
+$$ Hello \textbf{x} \prime $$
 
 ## Sampling by Gibb's method
 
