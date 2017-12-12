@@ -8,26 +8,6 @@ Here $$\beta_{i,j}$$ can be thought of as strengths of pairwise interactions, wh
 
 Further simplify, $$\alpha_i = \alpha, \forall i $$, $$\beta_{i,j} = \beta, \forall i,j $$, and $$\delta(x_i,x_j) = -x_i x_j $$. This gives and example of an [Ising Model](https://en.wikipedia.org/wiki/Ising_model). Then,
 
-Hello3
-
-$$\alpha$$
-
-$$\dfrac{1}{Z}\exp \{ -\alpha \sum_{\{i\}\in C_1} x_i  + \beta \sum_{\{i,j\}\in C_2} x_i x_j  \}$$
-
-$$P( \textbf{x} ) = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
-
-$$U( \textbf{x} ) = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
-
-
-$$
-\begin{align}
-U( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \} \\\\
-& = \dfrac{1}{Z}\exp \{ -\sum\limits_{c \in C} \phi_{c}(\textbf{x}) \} \\\\
-& = \dfrac{1}{Z} \prod\limits_{c \in C} \exp \{ -\phi_{c}(\textbf{x}) \} 
-\end{align}
-$$
-
-
 $$
 \begin{align}
 P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \} \\\\
@@ -36,3 +16,6 @@ P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \} \\\\
 \end{align}
 $$
 
+Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to compute the partition function $$Z$$. 
+
+##Sampling by Metropolis-Hastings method##
