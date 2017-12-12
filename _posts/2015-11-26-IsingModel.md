@@ -4,7 +4,11 @@ $$ U( \textbf{x} ) = \sum_{\{i\}\in C_1} \phi_1(x_i) + \sum_{\{i,j\}\in C_2} \ph
 
 Also assume that our label set $$L$$ is binary, $$L \in \{-1,1\}$$. To further simplify things, assume that $$\phi_1(x_i)=\alpha_i x_i $$ and $$ \phi_2(x_i,x_j) = \beta_{i,j} \delta(x_i,x_j) $$. Here $$\beta_{i,j}$$ can be thought of as strengths of pairwise interactions, while $$\alpha_i$$ reflects the bias of $$x_i$$ towards a particular state in preference to the other. 
 
-Further simplify, $$\alpha_i = \alpha \forall i$$, $$\beta_{i,j} = \beta \forall i,j $$, and $$\delta(x_i,x_j) = -x_i x_j$$. This gives and example of an [Ising Model](https://en.wikipedia.org/wiki/Ising_model). Then,
+Further simplify, $$\alpha_i = \alpha$$ $$\forall i$$, $$\beta_{i,j} = \beta$$ $$\forall i,j $$, and $$\delta(x_i,x_j) = -x_i x_j$$. This gives and example of an [Ising Model](https://en.wikipedia.org/wiki/Ising_model). Then,
+
+$$P( \textbf{x} ) & = \dfrac{1}{Z} \exp \{ -U(\textbf{x}) \}$$
+
+$$\dfrac{1}{Z}\exp \{ -\alpha \sum_{\{i\}\in C_1} x_i  + \beta \sum_{\{i,j\}\in C_2} x_i x_j  \}$$
 
 $$
 \begin{align}
