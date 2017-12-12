@@ -19,3 +19,5 @@ $$
 Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to compute the partition function $$Z$$. 
 
 ##Sampling by Metropolis-Hastings method
+
+something more...
