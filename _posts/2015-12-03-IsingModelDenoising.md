@@ -21,5 +21,11 @@ $$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\l
 
 Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise, i.e,$$y_i = x_i + \epsilon_i$$ where $$\epsilon_i$$ is $$N(0,\sigma^2)$$ iid. Then, $$P(y_i \vert x_i) = \dfrac{1}{\sqrt{2 \pi {\sigma}^2}}exp\{ -\dfrac{(y_i-x_i)^2}{2{\sigma}^2}\}$$, so that the full joint model becomes $$P(\textbf{Y} \vert \textbf{X}) = (\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}$$.
 
-We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we did in [Ising](https://pchanda.github.io/Ising-Model/) and then use the mean of the samples from the posterior as an estimate of the denoised image.    
+We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we did in [Ising](https://pchanda.github.io/Ising-Model/) and then use the mean of the samples from the posterior as an estimate of the denoised image. We have
 
+$$
+\begin{align}
+P(\textbf{X}|\textbf{Y}) & = $$\dfrac{P(\textbf{Y|X}) P(\textbf{X})}{P(\textbf{Y})} \\\\
+& = \dfrac{1}{P(\textbf{Y})} \[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}\] \[ P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\} \]
+\end{align}
+$$
