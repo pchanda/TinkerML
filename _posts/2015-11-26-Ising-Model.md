@@ -37,5 +37,10 @@ Here, $$\pi (\textbf{x}) = P(\textbf{x})$$. Similarly, $$\pi (\hat{\textbf{x}}) 
 ## Sampling by Gibb's method
 Repeat the following steps:
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
-Repeat:
-2. $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert N(x_1))$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$. 
+2. Repeat:
+- $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert N(x_1))$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$.
+- $$\hat{x}_2 \leftarrow $$ sample from $$P(x_2 \vert N(x_2))$$. Replace $$x_2$$ with $$\hat{x}_2$$ in $$\textbf{x}$$.
+$$\vdots$$
+- $$\hat{x}_n \leftarrow $$ sample from $$P(x_n \vert N(x_n))$$. Replace $$x_n$$ with $$\hat{x}_n$$ in $$\textbf{x}$$.
+
+Now how to compute $$P(x_i \vert N(x_i))$$ ?.
