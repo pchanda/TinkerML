@@ -26,7 +26,7 @@ Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to com
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
 Repeat the following steps:
 2. Select a random $$x_k$$. 
-3. Produce a new sample $$\textbf{x} \prime = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
+3. Produce a new sample $$\hat{\textbf{x}} = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
 4. Compute the acceptance probability of the new sample $$ \hat {\textbf{x}} $$ as $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})  g(\textbf{x} \vert \hat{\textbf{x}} )}{ \pi (\textbf{x}) g(\hat{\textbf{x}} \vert \textbf{x} ) } \} $$. 
 
 Here, $$\pi (\textbf{x}) = P(\textbf{x})$$. Similarly, $$\pi (\hat{\textbf{x}}) = P(\hat{\textbf{x}})$$ where the only difference is thay $$x_k$$ has been flipped to $$-x_k$$ in $$\hat{\textbf{x}}$$. The paritition function $$Z$$ is unchanged and cancels out in ratio $$\dfrac{\pi(\hat{\textbf{x}})}{\pi(\textbf{x})}$$. The function $$g(\textbf{x} \prime \vert \textbf{x} )$$ is the probability of the move $$\textbf{x} \rightarrow \hat{\textbf{x}}$$, it is assumed to be the same as $$g(\hat{\textbf{x}} \vert \textbf{x} )$$; i.e, the proposal distribution $$g(. \vert .)$$ is symmetric. So $$A(\hat{\textbf{x}} \vert \textbf{x})$$ is simply, $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \} $$.
@@ -38,11 +38,9 @@ Here, $$\pi (\textbf{x}) = P(\textbf{x})$$. Similarly, $$\pi (\hat{\textbf{x}}) 
 Repeat the following steps:
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
 2. Repeat:
-- $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert N(x_1))$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$.
-- $$\hat{x}_2 \leftarrow $$ sample from $$P(x_2 \vert N(x_2))$$. Replace $$x_2$$ with $$\hat{x}_2$$ in $$\textbf{x}$$.
+- $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert x_2,x_3,...,X_n)$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$.
+- $$\hat{x}_2 \leftarrow $$ sample from $$P(x_2 \vert \hat{x_1},x_3,...,x_n)$$. Replace $$x_2$$ with $$\hat{x}_2$$ in $$\textbf{x}$$.
+- $$\vdots$$
+- $$\hat{x}_n \leftarrow $$ sample from $$P(x_n \vert \hat{x_1},\hat{x_2},...,\hat{x_{n-1}})$$. Replace $$x_n$$ with $$\hat{x}_n$$ in $$\textbf{x}$$.
 
-$$\vdots$$
-
-- $$\hat{x}_n \leftarrow $$ sample from $$P(x_n \vert N(x_n))$$. Replace $$x_n$$ with $$\hat{x}_n$$ in $$\textbf{x}$$.
-
-Now how to compute $$P(x_i \vert N(x_i))$$ ?. We know that $$P(\textbf{x}) = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}$$. Consider pixel $$x_i$$ (random variable for site $$i$$) and its neighboring pixels $$N(x_i)$$. 
+Now how to compute $$P(x_i \vert x_1,x_2...,x_n)$$ ?. We know that $$P(\textbf{x}) = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}$$. Consider pixel $$x_i$$ (random variable for site $$i$$) conditioned on all other pixels $$x_1,x_2,...,x_{i-1},x_{i+1},...,x_n$$. 
