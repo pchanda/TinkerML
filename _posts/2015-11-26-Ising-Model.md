@@ -37,7 +37,7 @@ The function $$g(\textbf{x} \prime \vert \textbf{x} )$$ is the probability of th
 
 $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \} $$.
 
-Clearly when $$\pi (\hat{\textbf{x}}) \geqslant \pi (\textbf{x})$$, the ratio $$\dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \geqslant 1 $$, so that $$A(\hat{\textbf{x}} \vert \textbf{x}) = 1 $$ and the state will transition to $$\hat{\textbf{x}}$$ with certainty. If $$\pi (\hat{\textbf{x}}) < \pi (\hat{\textbf{x}})$$, accept the new sample $$\hat{\textbf{x}}$$ with some probability. That is, generate a random number $$u \in Uniform(0,1)$$, accept $$\hat{\textbf{x}}$$ if $$ u < \dfrac{ \pi (\hat{\textbf{x}}}{ \pi (\textbf{x})} $$, otherwise keep $$\textbf{x}$$.
+Clearly when $$\pi (\hat{\textbf{x}}) \geqslant \pi (\textbf{x})$$, the ratio $$\dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \geqslant 1 $$, so that $$A(\hat{\textbf{x}} \vert \textbf{x}) = 1 $$ and the state will transition to $$\hat{\textbf{x}}$$ with certainty. If $$\pi (\hat{\textbf{x}}) < \pi (\hat{\textbf{x}})$$, accept the new sample $$\hat{\textbf{x}}$$ with some probability. That is, generate a random number $$u \in Uniform(0,1)$$, accept $$\hat{\textbf{x}}$$ if $$ u < \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} $$, otherwise keep $$\textbf{x}$$.
 
 
 ## Sampling by Gibb's method
