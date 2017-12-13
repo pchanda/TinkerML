@@ -53,7 +53,7 @@ $$ \exp \{ -\alpha  \sum_{x_k \in \{x_i,N(x_i)\}} x_k + \beta \sum_{x_k,x_j\in \
 
 And the other goup would be 
 
-$$ \exp \{ -\alpha \sum_{ \substack{ \{k\} \in C_1 \\ x_k \ne \{x_i,N(x_i)\} }} x_k + \beta \sum_{ \substack{ \{k,j\} \in C_2 \\ x_k,x_j \notin \{x_i,N(x_i)\} }} x_k x_j \} $$. 
+\\( \exp \{ -\alpha \sum_{ \substack{ \{k\} \in C_1 \\ x_k \notin \{x_i,N(x_i)\} }} x_k + \beta \sum_{ \substack{ \{k,j\} \in C_2 \\ x_k,x_j \notin \{x_i,N(x_i)\} }} x_k x_j \} \\). 
 
 The second group that does not depend on $$x_i$$ will cancel out from the numerator and denominator in the expression of $$P(x_i \vert x_1,...x_{i-1},x_{i+1},...x_n)$$. This leaves,
 
@@ -64,3 +64,5 @@ P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) & = \dfrac{\exp \{ -\alpha  x_i + \
 & = P(x_i \vert N(x_i))
 \end{align}
 $$
+
+So we just need to focus on $$P(x_i \vert N(x_i))$$. 
