@@ -23,23 +23,19 @@ $$
 Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to compute the partition function $$Z$$. 
 
 ## Sampling by Metropolis-Hastings method
-Repeat the following steps:
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
+Repeat the following steps:
 2. Select a random $$x_k$$. 
 3. Produce a new sample $$\textbf{x} \prime = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
-4. Compute the acceptance probability of the new sample $$ \hat {\textbf{x}} $$ as 
+4. Compute the acceptance probability of the new sample $$ \hat {\textbf{x}} $$ as $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})  g(\textbf{x} \vert \hat{\textbf{x}} )}{ \pi (\textbf{x}) g(\hat{\textbf{x}} \vert \textbf{x} ) } \} $$. 
 
-    $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})  g(\textbf{x} \vert \hat{\textbf{x}} )}{ \pi (\textbf{x}) g(\hat{\textbf{x}} \vert \textbf{x} ) } \} $$ 
+Here, $$\pi (\textbf{x}) = P(\textbf{x})$$. Similarly, $$\pi (\hat{\textbf{x}}) = P(\hat{\textbf{x}})$$ where the only difference is thay $$x_k$$ has been flipped to $$-x_k$$ in $$\hat{\textbf{x}}$$. The paritition function $$Z$$ is unchanged and cancels out in ratio $$\dfrac{\pi(\hat{\textbf{x}})}{\pi(\textbf{x})}$$. The function $$g(\textbf{x} \prime \vert \textbf{x} )$$ is the probability of the move $$\textbf{x} \rightarrow \hat{\textbf{x}}$$, it is assumed to be the same as $$g(\hat{\textbf{x}} \vert \textbf{x} )$$; i.e, the proposal distribution $$g(. \vert .)$$ is symmetric. So $$A(\hat{\textbf{x}} \vert \textbf{x})$$ is simply, $$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \} $$.
 
-Here, $$\pi (\textbf{x}) = P(\textbf{x})$$. Similarly, $$\pi (\hat{\textbf{x}}) = P(\hat{\textbf{x}})$$ where the only difference is thay $$x_k$$ has been flipped to $$-x_k$$ in $$\hat{\textbf{x}}$$. The paritition function $$Z$$ is unchanged and cancels out in ratio $$\dfrac{\pi(\hat{\textbf{x}})}{\pi(\textbf{x})}$$.  
-
-The function $$g(\textbf{x} \prime \vert \textbf{x} )$$ is the probability of the move $$\textbf{x} \rightarrow \hat{\textbf{x}}$$, it is assumed to be the same as $$g(\hat{\textbf{x}} \vert \textbf{x} )$$; i.e, the proposal distribution $$g(. \vert .)$$ is symmetric. So $$A(\hat{\textbf{x}} \vert \textbf{x})$$ is simply,
-
-$$A(\hat{\textbf{x}} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \} $$.
-
-Clearly when $$\pi (\hat{\textbf{x}}) \geqslant \pi (\textbf{x})$$, the ratio $$\dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \geqslant 1 $$, so that $$A(\hat{\textbf{x}} \vert \textbf{x}) = 1 $$ and the state will transition to $$\hat{\textbf{x}}$$ with certainty. If $$\pi (\hat{\textbf{x}}) < \pi (\hat{\textbf{x}})$$, accept the new sample $$\hat{\textbf{x}}$$ with some probability. That is, generate a random number $$u \in Uniform(0,1)$$, accept $$\hat{\textbf{x}}$$ if $$ u < \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} $$, otherwise keep $$\textbf{x}$$.
+ Clearly when $$\pi (\hat{\textbf{x}}) \geqslant \pi (\textbf{x})$$, the ratio $$\dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} \geqslant 1 $$, so that $$A(\hat{\textbf{x}} \vert \textbf{x}) = 1 $$ and the state will transition to $$\hat{\textbf{x}}$$ with certainty. If $$\pi (\hat{\textbf{x}}) < \pi (\textbf{x})$$, accept the new sample $$\hat{\textbf{x}}$$ with some probability. That is, generate a random number $$u \in Uniform(0,1)$$, accept $$\hat{\textbf{x}}$$ if $$ u < \dfrac{ \pi (\hat{\textbf{x}})}{ \pi (\textbf{x})} $$, otherwise keep $$\textbf{x}$$.
 
 
 ## Sampling by Gibb's method
-
-something more...
+Repeat the following steps:
+1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
+Repeat:
+2. $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert N(x_1))$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$. 
