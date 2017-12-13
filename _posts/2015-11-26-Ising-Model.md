@@ -23,7 +23,7 @@ $$
 Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to compute the partition function $$Z$$. 
 
 ## Sampling by Metropolis-Hastings method
-
+Repeat the following steps:
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
 2. Select a random $$x_k$$. 
 3. Produce a new sample $$\textbf{x} \prime = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
