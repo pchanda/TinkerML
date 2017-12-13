@@ -21,4 +21,4 @@ $$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\l
 
 Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise, i.e,$$y_i = x_i + \epsilon_i$$ where $$\epsilon_i$$ is $$N(0,\sigma^2)$$ iid.
 
-So, 
+More to write...
