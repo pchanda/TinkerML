@@ -27,12 +27,12 @@ Drawing samples from $$P(\textbf{x})$$ is tricky, as we do not have a way to com
 1. Start with some configuration $$\textbf{x} = \{x_1,x_2,...x_n\}$$.
 2. Select a random $$x_k$$. 
 3. Produce a new sample $$\textbf{x} \prime = \{x_1,x_2,...,-x_k,...,x_n \}$$ by flipping $$x_k$$.
-4. Compute the acceptance probability of the new sample $$ \hat \textbf{x} $$ as 
+4. Compute the acceptance probability of the new sample $$ \hat {\textbf{x}} $$ as 
 
     $$A(\hat \textbf{x} \vert \textbf{x})$$ = min $$\{ 1, \dfrac{ \pi (\hat \textbf{x}  g(\textbf{x} \vert \hat \textbf{x} )}{ \pi (\textbf{x}) g(\textbf{x} \prime \vert \textbf{x} ) } \} $$ 
 
 
-$$ Hello \textbf{x} \prime 12 $$
+$$ Hello \textbf{x} \prime 1234 $$
 
 ## Sampling by Gibb's method
 
