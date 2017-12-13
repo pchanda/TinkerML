@@ -43,4 +43,6 @@ Repeat the following steps:
 - $$\vdots$$
 - $$\hat{x}_n \leftarrow $$ sample from $$P(x_n \vert \hat{x_1},\hat{x_2},...,\hat{x_{n-1}})$$. Replace $$x_n$$ with $$\hat{x}_n$$ in $$\textbf{x}$$.
 
-Now how to compute $$P(x_i \vert x_1,x_2...,x_n)$$ ?. We know that $$P(\textbf{x}) = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}$$. Consider pixel $$x_i$$ (random variable for site $$i$$) conditioned on all other pixels $$x_1,x_2,...,x_{i-1},x_{i+1},...,x_n$$. 
+Now how to compute $$P(x_i \vert x_1,x_2...,x_n)$$ ?. We know that $$P(\textbf{x}) = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}$$. Consider pixel $$x_i$$ (random variable for site $$i$$) conditioned on all other pixels $$x_1,x_2,...,x_{i-1},x_{i+1},...,x_n$$, i.e, $$P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n)$$.
+
+$$P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) = \dfrac{P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n}}{\sum_{x_i \in L} P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n}}$$.
