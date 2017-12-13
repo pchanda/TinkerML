@@ -59,10 +59,10 @@ The second group that does not depend on $$x_i$$ will cancel out from the numera
 
 $$
 \begin{align}
-P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) & = \dfrac{\exp \{ -\alpha  x_i + \beta \sum_{x_j\in N(x_i)} x_i x_j \}}{\sum_{x_i \in L} \exp \{ -\alpha  x_i + \beta \sum_{x_j\in N(x_i)} x_i x_j \} } \\\\
+P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) & = \dfrac{\exp \{ -\alpha  \sum_{x_k \in \{x_i,N(x_i)\}} x_k + \beta \sum_{x_k,x_j\in \{x_i,N(x_i)\}} x_k x_j \}}{\sum_{x_i \in L} \exp \{ -\alpha  \sum_{x_k \in \{x_i,N(x_i)\}} x_k + \beta \sum_{x_k,x_j\in \{x_i,N(x_i)\}} x_k x_j \} } \\\\
 & = \dfrac{P(x_i,N(x_i))}{\sum_{x_i \in L} P(x_i,N(x_i))} \\\\
 & = P(x_i \vert N(x_i))
 \end{align}
 $$
 
-So we just need to focus on $$P(x_i \vert N(x_i))$$. 
+So we just need to sample from $$P(x_i \vert N(x_i))$$ instead of trying to sample from $$P(x_1,...,x_i,...,x_n)$$. 
