@@ -40,7 +40,9 @@ Repeat the following steps:
 2. Repeat:
 - $$\hat{x}_1 \leftarrow $$ sample from $$P(x_1 \vert N(x_1))$$. Replace $$x_1$$ with $$\hat{x}_1$$ in $$\textbf{x}$$.
 - $$\hat{x}_2 \leftarrow $$ sample from $$P(x_2 \vert N(x_2))$$. Replace $$x_2$$ with $$\hat{x}_2$$ in $$\textbf{x}$$.
+
 $$\vdots$$
+
 - $$\hat{x}_n \leftarrow $$ sample from $$P(x_n \vert N(x_n))$$. Replace $$x_n$$ with $$\hat{x}_n$$ in $$\textbf{x}$$.
 
 Now how to compute $$P(x_i \vert N(x_i))$$ ?. We know that $$P(\textbf{x}) = \dfrac{1}{Z}  \exp \{ -\alpha \sum_{\{i\}\in C_1} x_i\}  \exp\{ \beta \sum_{\{i,j\}\in C_2} x_i x_j \}$$. Consider pixel $$x_i$$ (random variable for site $$i$$) and its neighboring pixels $$N(x_i)$$. 
