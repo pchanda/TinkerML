@@ -47,13 +47,13 @@ Now how to compute $$P(x_i \vert x_1,x_2...,x_n)$$ ?. We know that $$P(\textbf{x
 
 $$P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) = \dfrac{P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n)}{\sum_{x_i \in L} P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n)}$$.
 
-But we can split $$P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n)$$ into two groups - one that depends on $$x_i$$ and the other that does not. The group that depends on $$x_i$$ would be 
+But we can split $$P(x_1,...,x_{i-1},x_i,x_{i+1},...,x_n)$$ into two groups - one that depends on $$x_i$$ and its neighbors $$N(x_i)$$; and the other that involves the other $$x$$'s. The group that depends on $$\{x_i,N(x_i)\}$$ would be 
 
-$$ \exp \{ -\alpha  x_i + \beta \sum_{x_j\in N(x_i)} x_i x_j \} $$. 
+$$ \exp \{ -\alpha  \sum_{x_k \in \{x_i,N(x_i)\}} x_k + \beta \sum_{x_k,x_j\in \{x_i,N(x_i)\}} x_k x_j \} $$. 
 
 And the other goup would be 
 
-$$ \exp \{ -\alpha \sum_{ \substack{ \{k\} \in C_1 \\ k \ne i }} x_k + \beta \sum_{ \substack{ \{k,j\} \in C_2 \\ k \ne i,k \ne j}} x_k x_j \} $$. 
+$$ \exp \{ -\alpha \sum_{ \substack{ \{k\} \in C_1 \\ x_k \ne \{x_i,N(x_i)\} }} x_k + \beta \sum_{ \substack{ \{k,j\} \in C_2 \\ x_k,x_j \notin \{x_i,N(x_i)\} }} x_k x_j \} $$. 
 
 The second group that does not depend on $$x_i$$ will cancel out from the numerator and denominator in the expression of $$P(x_i \vert x_1,...x_{i-1},x_{i+1},...x_n)$$. This leaves,
 
