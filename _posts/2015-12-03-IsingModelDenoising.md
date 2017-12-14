@@ -36,4 +36,4 @@ Now to do Gibb's sampling, we need $$P(x_i \vert N(x_i))$$, where $$N(x_i)$$ now
 From Gibb's sampling in [Ising model](https://en.wikipedia.org/wiki/Ising_model), 
 $$ {P(x_i,N(x_i))} = \dfrac{P(x_i,N(x_i))}{P(x_i=-1,N(x_i)) + P(x_i=1,N(x_i))} $$.
 
-Therefore, $$$$ {P(x_i=1\vert N(x_i))} = \$$  1234
+Therefore, $$ {P(x_i=1\vert N(x_i))} = $$  1234
