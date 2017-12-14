@@ -69,3 +69,4 @@ So to achive sampling from $$P(\textbf{x})$$ (our original goal), we just need t
 
 We have $$P(x_i=1 \vert N(x_i)) = \dfrac{\exp \{ -\alpha + \beta \sum_{x_j\in N(x_i)} x_j \}} {\exp \{ -\alpha + \beta \sum_{x_j\in N(x_i)} x_j \} + \exp \{ \alpha - \beta \sum_{x_j\in N(x_i)} x_j \}} $$, and $$P(x_i=-1 \vert N(x_i)) = 1 - P(x_i \vert N(x_i))$$. Generate a random number $$u \in $$ Uniform(0,1). If $$u \leq P(x_i=1 \vert N(x_i))$$, output a 1 for $$\hat{x_i}$$ else output -1 for $$\hat{x_i}$$.
 
+A [python implementation](https://github.com/pchanda/Makov_Random_Field/blob/master/Ising.py) of a small image compares the probability distribution of samples obtained using Gibb's sampling with the distribution obtained by generating all possible configurations of the image.  
