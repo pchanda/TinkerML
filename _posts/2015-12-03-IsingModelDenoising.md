@@ -40,4 +40,4 @@ Therefore, $$ {P(x_i=1\vert N(x_i))} = \dfrac{\exp\{ -\dfrac{\sum_{i=1}^n (y_i-1
 
 And, $$ {P(x_i=-1\vert N(x_i))} = 1 - {P(x_i=1\vert N(x_i))}$$. 
 
-A [python implementation](https://github.com/pchanda/Makov_Random_Field/Image_Denoising_Gaussian.py). is at github.
+A [python implementation](https://github.com/pchanda/Makov_Random_Field/blob/master/Image_Denoising_Gaussian.py) is at github.
