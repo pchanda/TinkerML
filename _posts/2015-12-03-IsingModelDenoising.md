@@ -27,7 +27,7 @@ We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we 
 $$\dfrac{1}{P(\textbf{Y})} \underbrace{[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}] [\dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} ]$$
 
 
-$$ \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z} (\dfrac{1}{ \sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}  -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} $$
+$$ \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z} (\dfrac{1}{ \sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}   -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}  $$
 
 
 $$
@@ -43,4 +43,4 @@ Now to do Gibb's sampling, we need $$P(x_i \vert N(x_i))$$, where $$N(x_i)$$ now
 From Gibb's sampling in [Ising model](https://en.wikipedia.org/wiki/Ising_model), 
 $$ {P(x_i,N(x_i))} = \dfrac{P(x_i,N(x_i))}{P(x_i=-1,N(x_i)) + P(x_i=1,N(x_i))} $$.
 
-Therefore, $$ {P(x_i=1\vert N(x_i))} = $$  12
+Therefore, $$ {P(x_i=1\vert N(x_i))} = $$  12345
