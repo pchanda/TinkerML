@@ -38,4 +38,6 @@ $$ {P(x_i,N(x_i))} = \dfrac{P(x_i,N(x_i))}{P(x_i=-1,N(x_i)) + P(x_i=1,N(x_i))} $
 
 Therefore, $$ {P(x_i=1\vert N(x_i))} = \dfrac{\exp\{ -\dfrac{\sum_{i=1}^n (y_i-1)^2}{2{\sigma}^2}   -\alpha + \beta\sum\limits_{x_j \in N(x_i)} x_j\}} { \exp\{ -\dfrac{\sum_{i=1}^n (y_i-1)^2}{2{\sigma}^2}  -\alpha + \beta\sum\limits_{x_j \in N(x_i)} x_j\}  + \exp\{ -\dfrac{\sum_{i=1}^n (y_i+1)^2}{2{\sigma}^2}   +\alpha - \beta\sum\limits_{x_j \in N(x_i)} x_j\} }$$.
 
-And, $$ {P(x_i=-1\vert N(x_i))} = 1 - {P(x_i=1\vert N(x_i))}$$. A python implementation [Image_Denoising_Gaussian.py](https://github.com/pchanda/Makov_Random_Field). is at github. 
+And, $$ {P(x_i=-1\vert N(x_i))} = 1 - {P(x_i=1\vert N(x_i))}$$. 
+
+A python implementation [Image_Denoising_Gaussian.py](https://github.com/pchanda/Makov_Random_Field). is at github. 
