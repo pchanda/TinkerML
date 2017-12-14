@@ -21,14 +21,7 @@ $$P(X) = \dfrac{1}{Z}\exp\{ -U(\textbf{x}) \} = \dfrac{1}{Z}\exp\{ -\alpha\sum\l
 
 Assume that the pixels in the noise-free image are corrupted by an indepedent zero-mean Gaussian noise, i.e,$$y_i = x_i + \epsilon_i$$ where $$\epsilon_i$$ is $$N(0,\sigma^2)$$ iid. Then, $$P(y_i \vert x_i) = \dfrac{1}{\sqrt{2 \pi {\sigma}^2}}exp\{ -\dfrac{(y_i-x_i)^2}{2{\sigma}^2}\}$$, so that the full joint model becomes $$P(\textbf{Y} \vert \textbf{X}) = (\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}$$.
 
-We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we did in [Ising](https://pchanda.github.io/Ising-Model/) and then use the mean of the samples from the posterior as an estimate of the denoised image. We have
-
-
-$$\dfrac{1}{P(\textbf{Y})} \underbrace{[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}] [\dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} ]$$
-
-
-$$ \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z} (\dfrac{1}{ \sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}   -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}  $$
-
+We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we did in [Ising Model](https://pchanda.github.io/Ising-Model/) and then use the mean of the samples from the posterior as an estimate of the denoised image. We have
 
 $$
 \begin{align}
@@ -40,7 +33,9 @@ $$
 
 Now to do Gibb's sampling, we need $$P(x_i \vert N(x_i))$$, where $$N(x_i)$$ now include $$y_i$$ as well because now there is an edge between $$x_i$$ and $$y_i$$.
 
-From Gibb's sampling in [Ising model](https://en.wikipedia.org/wiki/Ising_model), 
+From Gibb's sampling in [Ising Model](https://pchanda.github.io/Ising-Model/), 
 $$ {P(x_i,N(x_i))} = \dfrac{P(x_i,N(x_i))}{P(x_i=-1,N(x_i)) + P(x_i=1,N(x_i))} $$.
 
-Therefore, $$ {P(x_i=1\vert N(x_i))} = \dfrac{\exp\{ -\dfrac{\sum_{i=1}^n (y_i-1)^2}{2{\sigma}^2}   -\alpha + \beta\sum\limits_{x_j \in N(x_i)} x_j\}} { hello }$$  
+Therefore, $$ {P(x_i=1\vert N(x_i))} = \dfrac{\exp\{ -\dfrac{\sum_{i=1}^n (y_i-1)^2}{2{\sigma}^2}   -\alpha + \beta\sum\limits_{x_j \in N(x_i)} x_j\}} { \exp\{ -\dfrac{\sum_{i=1}^n (y_i-1)^2}{2{\sigma}^2}  -\alpha + \beta\sum\limits_{x_j \in N(x_i)} x_j\}  + \exp\{ -\dfrac{\sum_{i=1}^n (y_i+1)^2}{2{\sigma}^2}   +\alpha - \beta\sum\limits_{x_j \in N(x_i)} x_j\} }$$.
+
+And, $$ {P(x_i=-1\vert N(x_i))} = 1 - {P(x_i=1\vert N(x_i))}$$. A python implementation [Image_Denoising_Gaussian.py](https://github.com/pchanda/Makov_Random_Field). is at github. 
