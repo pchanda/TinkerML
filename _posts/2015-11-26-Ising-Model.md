@@ -65,7 +65,7 @@ P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n) & = \dfrac{\exp \{ -\alpha  \sum_{x
 \end{align}
 $$
 
-So to achive sampling from $$P(\textbf{x}) (our original goal), $$we just need to sample from $$P(x_i \vert N(x_i))$$ instead of trying to sample from $$P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n)$$ at each step of Gibbs' sampling. Now, how exactly do we draw a sample from $$P(x_i \vert N(x_i))$$ ?
+So to achive sampling from $$P(\textbf{x})$$ (our original goal), we just need to sample from $$P(x_i \vert N(x_i))$$ instead of trying to sample from $$P(x_i \vert x_1,...,x_{i-1},x_{i+1},...,x_n)$$ at each step of Gibbs' sampling. Now, how exactly do we draw a sample from $$P(x_i \vert N(x_i))$$ ?
 
 We have $$P(x_i=1 \vert N(x_i)) = \dfrac{\exp \{ -\alpha + \beta \sum_{x_j\in N(x_i)} x_j \}} {\exp \{ -\alpha + \beta \sum_{x_j\in N(x_i)} x_j \} + \exp \{ \alpha - \beta \sum_{x_j\in N(x_i)} x_j \}} $$, and $$P(x_i=-1 \vert N(x_i)) = 1 - P(x_i \vert N(x_i))$$. Generate a random number $$u \in $$ Uniform(0,1). If $$u \leq P(x_i=1 \vert N(x_i))$$, output a 1 for $$\hat{x_i}$$ else output -1 for $$\hat{x_i}$$.
 
