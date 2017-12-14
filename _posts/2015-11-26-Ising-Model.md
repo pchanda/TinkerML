@@ -2,7 +2,7 @@
 layout: post
 title: Ising Model
 ---
-Please refer to my earlier posts on [MRF](https://pchanda.github.io/MarkovRandomFields/) and [GRF](https://pchanda.github.io/GibbsRandomField/) for getting used to the notations. If we consider clique potentials for sizes of upto 2, he energy function is the sum of clique potentials of all cliques of size 1 and size 2,
+Please refer to my earlier posts on [MRF](https://pchanda.github.io/MarkovRandomFields/) and [GRF](https://pchanda.github.io/GibbsRandomField/) for getting used to the notations. If we consider clique potentials for sizes of upto 2, the energy function is the sum of clique potentials of all cliques of size 1 and size 2,
 
 $$ U( \textbf{x} ) = \sum_{\{i\}\in C_1} \phi_1(x_i) + \sum_{\{i,j\}\in C_2} \phi_2(x_i,x_j) $$
 
