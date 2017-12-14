@@ -30,4 +30,6 @@ P(\textbf{X}|\textbf{Y}) & = \dfrac{P(\textbf{Y|X}) P(\textbf{X})}{P(\textbf{Y})
 \end{align}
 $$
 
+Now to do Gibb's sampling, we need $$P(x_i \vert N(x_i))$$, where $$N(x_i)$$ now include $$y_i$$ as well because now there is an edge between $$x_i$$ and $$y_i$$.
+
 
