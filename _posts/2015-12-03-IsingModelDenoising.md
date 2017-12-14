@@ -23,6 +23,13 @@ Assume that the pixels in the noise-free image are corrupted by an indepedent ze
 
 We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we did in [Ising](https://pchanda.github.io/Ising-Model/) and then use the mean of the samples from the posterior as an estimate of the denoised image. We have
 
+
+$$\dfrac{1}{P(\textbf{Y})} \underbrace{[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}] [\dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} ]$$
+
+
+$$ \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z} (\dfrac{1}{ \sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}  -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} $$
+
+
 $$
 \begin{align}
 P(\textbf{X}|\textbf{Y}) & = \dfrac{P(\textbf{Y|X}) P(\textbf{X})}{P(\textbf{Y})} \\\\
