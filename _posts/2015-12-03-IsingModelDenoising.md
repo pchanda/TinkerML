@@ -26,8 +26,8 @@ We will sample from the posterior $$P(X \vert Y)$$ using Gibb's sampling (as we 
 $$
 \begin{align}
 P(\textbf{X}|\textbf{Y}) & = \dfrac{P(\textbf{Y|X}) P(\textbf{X})}{P(\textbf{Y})} \\\\
-& = \dfrac{1}{P(\textbf{Y})} \underbrace{[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}] [\dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} ]}
-& = \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z}(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}  -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} 
+& = \dfrac{1}{P(\textbf{Y})} \underbrace{[(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}] [\dfrac{1}{Z}\exp\{ -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} ]}
+& = \dfrac{1}{P(\textbf{Y})} \dfrac{1}{Z}(\dfrac{1}{\sqrt{2 \pi {\sigma}^2}})^n \exp\{ -\dfrac{\sum_{i=1}^n (y_i-x_i)^2}{2{\sigma}^2}\}  -\alpha\sum\limits_{\{i\} \in C_1} x_i + \beta\sum\limits_{\{i,j\} \in C_2} x_i x_j\}}_{P(\textbf{X,Y})} 
 \end{align}
 $$
 
