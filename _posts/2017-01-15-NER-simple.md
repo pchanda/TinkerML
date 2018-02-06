@@ -72,6 +72,7 @@ END_TOKEN = "</s>"
 NUM = "nnnummm"
 UNK = "uuunkkk"
 LBLS = ["PER","ORG","LOC","MISC","O"]
+WINDOW_SIZE = 2
 ```
 
 Next is the code to convert words to integer ids. Note a word dictionarty word_dict will be built in the process if word_dict is empty, otherwise new {word,id} pairs will get added to word_dict
@@ -139,7 +140,7 @@ def make_windowed_data(data, start, end, window_size=1):
     return output_list
 ```
 
-Finally the following functions puts all together. 'to_string' function just strips square brackets and curly braces from a list. So if the input string is '([8711, 8711, 0, 1, 2], 4)', the output will be `8711, 8711, 0, 1, 2; 4`. Note that ';' serves as delimiter between the word tokens and label token. 
+Finally the following functions puts all the elements described above, together. 'to_string' function just strips square brackets and curly braces from a list. So if the input string is '([87, 11, 0, 1, 2], 4)', the output will be `87, 11, 0, 1, 2; 4`. Note that ';' serves as delimiter between the word tokens and label token. 
 
 ```python
 def to_string(s):
@@ -150,10 +151,7 @@ def process_sentences_and_labels(data,window_size,word_dict=None):
     if word_dict is None:
       word_dict = {}
     data = words_to_ids(data,word_dict)
-    #print 'tokenized data : ',data
-
-    #start_token = [word_dict[START_TOKEN],word_dict[P_CASE + "aa"]]
-    #end_token = [word_dict[END_TOKEN], word_dict[P_CASE + "aa"]]
+  
     start_token = word_dict[defs.START_TOKEN]
     end_token = word_dict[defs.END_TOKEN]
 
@@ -168,3 +166,16 @@ def process_sentences_and_labels(data,window_size,word_dict=None):
     windowed_data_string = map(to_string,windowed_data)
     return (word_dict,windowed_data_string)
 ```
+
+You can quickly test the code as:
+
+```python
+# main
+vocab_fstream = open('sample.conll','r')
+data = read_conll_file(vocab_fstream)
+vocab_fstream.close()
+word_dict,windowed_data = process_sentences_and_labels(data,WINDOW_SIZE)
+print windowed_data
+print word_dict
+```
+
