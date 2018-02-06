@@ -5,6 +5,7 @@ title: Simple Named entity Recognition (NER) with tensorflow
 
 Given a peice of text, NER seeks to identify named entities in text and classify them  into various categories such as names of persons, organizations, locations, expressions of times, quantities, percentages, etc. Here we just want to build a model to predict 5 classes for every word in a sentence: PER (person), ORG (organization), LOC (location), MISC (miscellaneous) and O(null class, not a NER).  
 
+## Reading the training data
 For training, use the file 'train.conll'. A snapshot of the file looks like: 
 
 ```
@@ -61,4 +62,55 @@ def read_conll_file(fstream):
 For every sentence, this will return a list of [ words, labels] where words is a list of words in the sentence and labels contains the NER labels. For example element 0 in the list returned is
 ```
 (['EU', 'rejects', 'German', 'call', 'to', 'boycott', 'British', 'lamb', '.'],['ORG', 'O', 'MISC', 'O', 'O', 'O', 'MISC', 'O', 'O'])
+```
+
+Next we will convert each word to a unique integer id. First we add some global definitions:
+
+```python
+START_TOKEN = "<s>"
+END_TOKEN = "</s>"
+NUM = "nnnummm"
+UNK = "uuunkkk"
+LBLS = ["PER","ORG","LOC","MISC","O"]
+```
+
+Next is the code to convert words to integer ids. Note a word dictionarty word_dict will be built in the process if word_dict is empty, otherwise new {word,id} pairs will get added to word_dict
+
+```python
+def words_to_ids(data,word_dict):
+    # Preprocess data to construct an embedding
+    if len(word_dict)==0:
+       offset = 0
+       print('word_dict offset = ',offset)
+    else:
+       offset = max(word_dict.values())
+
+    for sentence, _ in data :
+       for word in sentence :
+           if word.isdigit(): word = defs.NUM
+           else: word = word.lower()
+           index = word_dict.setdefault(word,offset)
+           offset = offset if index<offset else (offset+1)
+
+    offset = i+1
+    for i,word in enumerate([defs.START_TOKEN, defs.END_TOKEN, defs.UNK],offset):
+        word_dict.setdefault(word,i)
+
+    sentences_ = []
+    labels_ = []
+
+    for sentence, label in data:
+       s = []
+       k = 0
+       for word in sentence:
+           if word.isdigit(): word = defs.NUM
+           else: word = word.lower()
+           #print(word,word_dict.get(word,defs.UNK),label[k])
+           #sentences_ += [[word_dict.get(word, word_dict[UNK]), word_dict[P_CASE + casing(word)]]]
+           s += [word_dict.get(word, word_dict[defs.UNK])]
+           k += 1
+       sentences_ += [s]
+       labels_ += [[defs.LBLS.index(l) for l in label]]
+       
+    return (sentences_,labels_)
 ```
