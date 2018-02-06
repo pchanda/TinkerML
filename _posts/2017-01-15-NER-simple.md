@@ -64,6 +64,7 @@ For every sentence, this will return a list of [ words, labels] where words is a
 (['EU', 'rejects', 'German', 'call', 'to', 'boycott', 'British', 'lamb', '.'],['ORG', 'O', 'MISC', 'O', 'O', 'O', 'MISC', 'O', 'O'])
 ```
 
+## Tokenize the training data, create sliding windows etc.
 Next we will convert each word to a unique integer id. First we add some global definitions:
 
 ```python
@@ -144,7 +145,7 @@ Finally the following functions puts all the elements described above, together.
 
 ```python
 def to_string(s):
-    # s = ([8711, 8711, 0, 1, 2], 4)
+    # input example : s = ([87, 11, 0, 1, 2], 4)
     return str(s).strip('()').strip('[').replace('],',';')
 
 def process_sentences_and_labels(data,window_size,word_dict=None):
@@ -177,5 +178,84 @@ vocab_fstream.close()
 word_dict,windowed_data = process_sentences_and_labels(data,WINDOW_SIZE)
 print windowed_data
 print word_dict
+```
+
+## Tensorflow Queues for creating input pipeline to read the training data
+Next we will use tensorflow queues to read the training data. This will take care of batching and shuffling. First lets add the necessary definitions:
+
+```python
+from __future__ import division
+from __future__ import print_function
+import tensorflow as tf
+import os
+import numpy as np
+import cPickle as pickle
+
+base_path = '/home/pchanda/deep_learning/NLP/word_classification_1/'
+
+# Basic model parameters.
+tf.app.flags.DEFINE_integer('batch_size', 100,"Number of windows to process in a batch.")
+tf.app.flags.DEFINE_string('data_dir', os.path.join(base_path,'data/'),"""Path to data directory""")
+tf.app.flags.DEFINE_string('model_dir', os.path.join(base_path,'saved_models/'),"""Path to saved models during training""")
+tf.app.flags.DEFINE_integer('num_examples_train', 204000,"Total number of pairs per epoch for training")
+tf.app.flags.DEFINE_integer('num_examples_test', 51362,"Total number of pairs per epoch for testing")
+tf.app.flags.DEFINE_integer('vocabulary_size',50000,"vocabulary size")
+tf.app.flags.DEFINE_integer('embedding_dimension', 50,"dimension of the word vectors")
+tf.app.flags.DEFINE_integer('hidden_dim', 200,"dimension of hidden layers")
+tf.app.flags.DEFINE_integer('number_of_classes', 5,"no of NER classes (including null or O)")
+tf.app.flags.DEFINE_integer('max_to_keep', 50,"max models to retain")
+tf.app.flags.DEFINE_integer('learning_rate', 0.001,"optimizer learning rate")
+
+```
+
+Note that you will need to make a specific directory structure for the above code. Also change the 'base_path' to your preferred directory and create subdirectories ./data and ./saved_models to hold the data files and models during training. The code below will read the data using tensorflow queue and the functions defined above. It will also shuffle them to create batches of size 'batch_size'. Note, the pre-processing (tokenizing, window creation etc) are done by calls to functions defined above. 
+
+```python
+FLAGS = tf.app.flags.FLAGS
+
+def _generate_batch(part_0,part_1, min_queue_examples,batch_size, shuffle):
+  num_preprocess_threads = 16
+  if shuffle:
+    line_value_batch = tf.train.shuffle_batch(
+        [part_0,part_1],
+        batch_size=batch_size,
+        num_threads=num_preprocess_threads,
+        capacity=min_queue_examples + 3 * batch_size,
+        min_after_dequeue=min_queue_examples)
+  else:
+    line_value_batch = tf.train.batch(
+        [part_0,part_1],
+        batch_size=batch_size,
+        num_threads=num_preprocess_threads,
+        capacity=min_queue_examples + 3 * batch_size)
+  return line_value_batch
+
+
+
+def get_input(data_filename, batch_size, num_examples, shuffle, word_dict=None):
+  # word_dict should be populated during testing to use the prebuilt dictionary made during testing.
+  vocab_fstream = open(data_filename,'rb')
+  data = process_vocabulary.read_conll_file(vocab_fstream)
+  vocab_fstream.close()
+  word_dict,windowed_data_string = process_vocabulary.process_sentences_and_labels(data,defs.WINDOW_SIZE,word_dict)
+
+  windowed_data_tensor = tf.convert_to_tensor(windowed_data_string, dtype=tf.string)
+  input_queue = tf.train.slice_input_producer([windowed_data_tensor],shuffle=shuffle)
+
+  line_value = input_queue[0]
+  line_value_parts = tf.decode_csv(line_value, record_defaults=[['NA']]*2,field_delim=";")
+  part_0 = tf.decode_csv(line_value_parts[0], record_defaults=[['.']]*(2*defs.WINDOW_SIZE+1),field_delim=",")
+  part_1 = line_value_parts[1]
+
+  part_0 = tf.string_to_number(part_0,out_type=tf.int64)
+  part_1 = tf.string_to_number(part_1,out_type=tf.int64)
+
+  # Ensure that the random shuffling has good mixing properties.
+  min_fraction_of_examples_in_queue = 0.4
+  min_queue_examples = int(num_examples * min_fraction_of_examples_in_queue)
+
+  # Generate a batch by building up a queue of examples.
+  batch =  _generate_batch(part_0,part_1,min_queue_examples, batch_size,shuffle=shuffle)
+  return batch,word_dict
 ```
 
