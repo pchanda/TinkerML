@@ -114,3 +114,57 @@ def words_to_ids(data,word_dict):
        
     return (sentences_,labels_)
 ```
+
+Next we define the function to create sliding windows of size 'window_size'. The input has already the words and labels converted to integer ids:
+
+```python
+def make_windowed_data(data, start, end, window_size=1):
+    # ensure data has both sentences and labels
+    assert len(data)==2, 'data should be a tuple = (list of sentences, list of labels)'
+    sentence_list = data[0] # sentence as a list of tokens e.g. [1,2,3,4]
+    label_list = data[1]    # labels as a list of tokens   e.g. [0,1,1,4]
+
+    orig_len = len(sentence_list)
+
+    #extend the sentence_list with start and end tokens
+    sentence_list = window_size*[start] + sentence_list + window_size*[end]
+
+    output_list = []
+    for i in range(window_size,window_size+orig_len):
+      sentence_slice = sentence_list[i-window_size:i+window_size+1]
+      label = label_list[i-window_size]
+      tuple = (sentence_slice,label)
+      output_list.append(tuple)
+
+    return output_list
+```
+
+Finally the following functions puts all together. 'to_string' function just strips square brackets and curly braces from a list. So if the input string is '([8711, 8711, 0, 1, 2], 4)', the output will be `8711, 8711, 0, 1, 2; 4`. Note that ';' serves as delimiter between the word tokens and label token. 
+
+```python
+def to_string(s):
+    # s = ([8711, 8711, 0, 1, 2], 4)
+    return str(s).strip('()').strip('[').replace('],',';')
+
+def process_sentences_and_labels(data,window_size,word_dict=None):
+    if word_dict is None:
+      word_dict = {}
+    data = words_to_ids(data,word_dict)
+    #print 'tokenized data : ',data
+
+    #start_token = [word_dict[START_TOKEN],word_dict[P_CASE + "aa"]]
+    #end_token = [word_dict[END_TOKEN], word_dict[P_CASE + "aa"]]
+    start_token = word_dict[defs.START_TOKEN]
+    end_token = word_dict[defs.END_TOKEN]
+
+    sentences_ = data[0] # list of tokenized sentences e.g. [[1,2,3,4],[5,6,7,8,9],[3,4,5],....]
+    labels_ = data[1]    # list of tokenized labels    e.g. [[0,1,1,4],[0,0,3,3,4],[4,4,2],....]
+    windowed_data = []
+    for s,l in zip(sentences_,labels_):
+       list_of_windows = make_windowed_data((s,l), start_token, end_token, window_size)
+       # each window in list_of_windows is a tuple
+       windowed_data += list_of_windows
+
+    windowed_data_string = map(to_string,windowed_data)
+    return (word_dict,windowed_data_string)
+```
