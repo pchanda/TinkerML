@@ -7,6 +7,32 @@ Given a peice of text, NER seeks to identify named entities in text and classify
 
 For training, use the file 'train.conll'. A snapshot of the file looks like: 
 
+```
+-DOCSTART-      O
+
+EU      ORG
+rejects O
+German  MISC
+call    O
+to      O
+boycott O
+British MISC
+lamb    O
+.       O
+
+
+The     O
+European        ORG
+Commission      ORG
+said    O
+on      O
+Thursday        O
+it      O
+disagreed       O
+with    O
+German  MISC
+```
+
 The following code implements a reader for conll files : 
 
 ```python
