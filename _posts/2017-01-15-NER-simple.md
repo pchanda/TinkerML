@@ -20,7 +20,6 @@ British MISC
 lamb    O
 .       O
 
-
 The     O
 European        ORG
 Commission      ORG
@@ -32,8 +31,7 @@ disagreed       O
 with    O
 German  MISC
 ```
-
-The following code implements a reader for conll files : 
+Each line has a word and the associated class (one of the 5 described above). A blank line separates two sentences. The following code implements a reader for conll files : 
 
 ```python
 def read_conll_file(fstream):
@@ -59,4 +57,8 @@ def read_conll_file(fstream):
         assert len(current_toks) == len(current_lbls)
         ret.append((current_toks, current_lbls))
     return ret
+```
+For every sentence, this will return a list of [ words, labels] where words is a list of words in the sentence and labels contains the NER labels. For example element 0 in the list returned is
+```
+(['EU', 'rejects', 'German', 'call', 'to', 'boycott', 'British', 'lamb', '.'],['ORG', 'O', 'MISC', 'O', 'O', 'O', 'MISC', 'O', 'O'])
 ```
