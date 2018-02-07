@@ -377,3 +377,6 @@ with tf.Session() as sess:
      coord.request_stop()
      coord.join(threads)
 ```
+
+## Code for testing
+The model should train with precision and recall of more the 0.9 each. 
