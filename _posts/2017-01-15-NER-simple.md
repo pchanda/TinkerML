@@ -304,8 +304,11 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that $$\cdot$$ indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
-$$ embedding(t) = \textbf{x} \cdot \textbf{Word\_Vector} $$
+$$ embedding(t) = \textbf{x} \cdot Word\_Vectors $$
+
 $$ h(t) = ReLU(embedding(t) \cdot W\_matrix + b_1) $$
+
+$  y(t) = softmax(h(t) \cdot U\_matrix + b_2)$$
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix. The $$W\_matrix$$ are the weights from the embedding to the hidden layer. 
 
