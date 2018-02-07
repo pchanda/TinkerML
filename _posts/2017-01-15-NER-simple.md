@@ -309,6 +309,8 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
+Pritam
+
 $$
 \begin{align}
 word\_embeddings(t) &= \textbf{x} \cdot Word\_Vectors \\\\
