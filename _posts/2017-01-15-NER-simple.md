@@ -89,13 +89,13 @@ def words_to_ids(data,word_dict):
 
     for sentence, _ in data :
        for word in sentence :
-           if word.isdigit(): word = defs.NUM
+           if word.isdigit(): word = NUM
            else: word = word.lower()
            index = word_dict.setdefault(word,offset)
            offset = offset if index<offset else (offset+1)
 
     offset = i+1
-    for i,word in enumerate([defs.START_TOKEN, defs.END_TOKEN, defs.UNK],offset):
+    for i,word in enumerate([START_TOKEN, END_TOKEN, UNK],offset):
         word_dict.setdefault(word,i)
 
     sentences_ = []
@@ -105,14 +105,12 @@ def words_to_ids(data,word_dict):
        s = []
        k = 0
        for word in sentence:
-           if word.isdigit(): word = defs.NUM
+           if word.isdigit(): word = NUM
            else: word = word.lower()
-           #print(word,word_dict.get(word,defs.UNK),label[k])
-           #sentences_ += [[word_dict.get(word, word_dict[UNK]), word_dict[P_CASE + casing(word)]]]
-           s += [word_dict.get(word, word_dict[defs.UNK])]
+           s += [word_dict.get(word, word_dict[UNK])]
            k += 1
        sentences_ += [s]
-       labels_ += [[defs.LBLS.index(l) for l in label]]
+       labels_ += [[LBLS.index(l) for l in label]]
        
     return (sentences_,labels_)
 ```
@@ -153,8 +151,8 @@ def process_sentences_and_labels(data,window_size,word_dict=None):
       word_dict = {}
     data = words_to_ids(data,word_dict)
   
-    start_token = word_dict[defs.START_TOKEN]
-    end_token = word_dict[defs.END_TOKEN]
+    start_token = word_dict[START_TOKEN]
+    end_token = word_dict[END_TOKEN]
 
     sentences_ = data[0] # list of tokenized sentences e.g. [[1,2,3,4],[5,6,7,8,9],[3,4,5],....]
     labels_ = data[1]    # list of tokenized labels    e.g. [[0,1,1,4],[0,0,3,3,4],[4,4,2],....]
@@ -237,14 +235,14 @@ def get_input(data_filename, batch_size, num_examples, shuffle, word_dict=None):
   vocab_fstream = open(data_filename,'rb')
   data = process_vocabulary.read_conll_file(vocab_fstream)
   vocab_fstream.close()
-  word_dict,windowed_data_string = process_vocabulary.process_sentences_and_labels(data,defs.WINDOW_SIZE,word_dict)
+  word_dict,windowed_data_string = process_vocabulary.process_sentences_and_labels(data,WINDOW_SIZE,word_dict)
 
   windowed_data_tensor = tf.convert_to_tensor(windowed_data_string, dtype=tf.string)
   input_queue = tf.train.slice_input_producer([windowed_data_tensor],shuffle=shuffle)
 
   line_value = input_queue[0]
   line_value_parts = tf.decode_csv(line_value, record_defaults=[['NA']]*2,field_delim=";")
-  part_0 = tf.decode_csv(line_value_parts[0], record_defaults=[['.']]*(2*defs.WINDOW_SIZE+1),field_delim=",")
+  part_0 = tf.decode_csv(line_value_parts[0], record_defaults=[['.']]*(2*WINDOW_SIZE+1),field_delim=",")
   part_1 = line_value_parts[1]
 
   part_0 = tf.string_to_number(part_0,out_type=tf.int64)
@@ -260,6 +258,7 @@ def get_input(data_filename, batch_size, num_examples, shuffle, word_dict=None):
 ```
 
 ## Define the model for training
+
 Now with the reading and input queues taken care of, lets define our model and train. Input for training is a batch of windows 'batch' in the return value of the function 'get_input(...)' above. Lets add the ops to read the data.
 
 ```python
@@ -304,22 +303,21 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
-`
-1. $$ word\_embeddings(t) = \textbf{x} \cdot Word\_Vectors $$
-
-2. $$ h(t) = ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) $$
-
-3. $$ \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2)$$
-
-4. $$  Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))$$
-`
+$$
+\begin{align}
+word\_embeddings(t) &= \textbf{x} \cdot Word\_Vectors 
+h(t) &= ReLU( word\_embeddings(t) \cdot W\_matrix + b_1)
+\hat{y}^{(t)} &= softmax(h(t) \cdot U\_matrix + b_2)
+Loss(t) &= CrossEntropy(y^{(t)}, \hat{y}(t))
+\end{align}
+$$
 
 Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, as each window has (2 x WINDOW_SIZE + 1) words.
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (1. in model above) to the hidden layer (2. in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (3. in model above).   
 
 ```python
-window_size = defs.WINDOW_SIZE
+window_size = WINDOW_SIZE
 no_of_words_per_window =  2*window_size+1
 stacked_window_dim = no_of_words_per_window*FLAGS.embedding_dimension
 
@@ -349,6 +347,8 @@ train_step = tf.train.AdamOptimizer(FLAGS.learning_rate).minimize(loss)
 #predicted NER labels
 predicted_labels = tf.argmax(logits,axis=1)
 ```
+
+## Create session for training
 
 Now lets fire up the tensorflow training session with the following code: 
 
