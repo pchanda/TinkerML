@@ -498,4 +498,4 @@ with tf.Session() as sess:
      coord.join(threads)
 ```
 
-This should result in precision of about 0.83, recall of 0.83 and $$F_1$$ score of about 0.75 (Not bad for the simple model!!!). Full code for everything described above is available at [NER Code](https://github.com/pchanda/NER-FeedForward/)
+This should result in precision of about 0.83, recall of 0.7 and $$F_1$$ score of about 0.75 (Not bad for the simple model!!!). Full code for everything described above is available at [NER Code](https://github.com/pchanda/NER-FeedForward/)
