@@ -312,7 +312,7 @@ $$  \hat{y}(t) = softmax(h(t) \cdot U\_matrix + b_2)$$
 
 $$  Loss(t) = CrossEntropy(y_t, \hat{y}(t))$$
 
-
+Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension (2 x WINDOW_SIZe + 1)vocabulary_size, each window has (2 x WINDOW_SIZe + 1) words.
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix. The $$W\_matrix$$ are the weights from the embedding to the hidden layer. 
 
