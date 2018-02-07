@@ -180,7 +180,7 @@ print windowed_data
 print word_dict
 ```
 
-## Tensorflow Queues for creating input pipeline to read the training data
+## Tensorflow queues for creating input pipeline to read the training data
 Next we will use tensorflow queues to read the training data. This will take care of batching and shuffling. First lets add the necessary definitions:
 
 ```python
@@ -259,3 +259,83 @@ def get_input(data_filename, batch_size, num_examples, shuffle, word_dict=None):
   return batch,word_dict
 ```
 
+## Define the model for training
+Now with the reading and input queues taken care of, lets define our model and train. Input for training is a batch of windows 'batch' in the return value of the function 'get_input(...)' above. Lets add the ops to read the data.
+
+```python
+FLAGS = tf.app.flags.FLAGS
+
+input_filename = os.path.join(FLAGS.data_dir,'train.conll')
+# read the vocabulary file and pre-trained embedding file on some of the words.
+vocab_file = os.path.join(FLAGS.data_dir,'vocab.txt')
+# read the embedding matrix, contains pre-trained word vectors for each word in the vocabulary 
+embedding_file = os.path.join(FLAGS.data_dir,'wordVectors.txt')
+# add ops to read data
+line_batch,word_dict = get_input(input_filename,FLAGS.batch_size, FLAGS.num_examples_train, True)
+
+#save the dictionary to use during testing
+with open(os.path.join(FLAGS.data_dir,'word_dict_train.pkl'),'wb') as fptr:
+   pickle.dump(word_dict,fptr)
+   
+```
+
+Each word (and integer) will be one-hot encoded and used to pull out the corresponding word vector from the embedding matrix $$Word\_Vectors$$ (or the matrix of word vectors (shape: vocabulary_size x embedding_dimension)). The function 'load_embedding_matrix(...)' will read the pre-trained embedding matrix of the words present in our vocabulary. The pre-trained embedding matrix will serve to initialize the $$Word\_Vectors$$ matrix, which will also get updated during our training, more onto this later. 
+
+```python
+def load_word_embeddings(word_dict,vocab_file,embedding_file):
+   #read the embeddings
+   embeddings = np.array(np.random.randn(FLAGS.vocabulary_size, FLAGS.embedding_dimension), dtype=np.float32)
+   fstream_1 = open(vocab_file,'rb')
+   fstream_2 = open(embedding_file,'rb')
+   for word,vector in zip(fstream_1,fstream_2):
+      word = word.strip()
+      if word.isdigit(): word = defs.NUM
+      else: word = word.lower()
+      vector = np.array(list(map(float,vector.strip().split(" "))))
+      if word in word_dict:
+          embeddings[word_dict[word]] = vector
+   fstream_1.close()
+   fstream_2.close()
+   print 'load_word_embeddings : vocabulary size = ',FLAGS.vocabulary_size, ' embedding_shape = ',embeddings.shape
+   return embeddings
+
+embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # read pre-trained word embeddings.
+```
+
+Now comes the model creation. Breifly, given a input window $$ \textbf{x} = [ x(t-w), x(t), ... ; x(t+w)]$$ (center word is $$x(t)$$) model is :
+
+$$ embedding(t) = \textbf{x} \textbf{Word\_Vector} $$
+
+The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix. The $$W\_matrix$$ are the weights from the embedding to the hidden layer. 
+
+```python
+window_size = defs.WINDOW_SIZE
+no_of_words_per_window =  2*window_size+1
+stacked_window_dim = no_of_words_per_window*FLAGS.embedding_dimension
+
+Word_Vectors = tf.Variable(embeddings,name='Word_Embedding_Matrix')
+W_matrix = utils.get_weights(name='W_Matrix',shape=[stacked_window_dim,FLAGS.hidden_dim])
+W_biases = utils.get_weights('hidden_biases',shape=[FLAGS.batch_size,FLAGS.hidden_dim])
+
+U_matrix = utils.get_weights('U_Matrix',shape=[FLAGS.hidden_dim,FLAGS.number_of_classes])
+U_biases = utils.get_weights('output_biases',shape=[FLAGS.batch_size,FLAGS.number_of_classes])
+
+window = line_batch[0]
+labels = line_batch[1]
+
+one_hot_words = tf.one_hot(window,depth=FLAGS.vocabulary_size,dtype=tf.float32)
+words_reshaped = tf.reshape(one_hot_words,[-1,FLAGS.vocabulary_size])
+
+word_embeddings = tf.matmul(words_reshaped,Word_Vectors)
+word_embeddings_stacked_per_window = tf.reshape(word_embeddings,shape=[-1,stacked_window_dim]) # shape = [batch_size x stacked_window_dim]
+
+hidden_layer = tf.nn.relu(tf.matmul(word_embeddings_stacked_per_window,W_matrix) + W_biases,name='hidden_layer')
+logits = tf.nn.softmax(tf.matmul(hidden_layer,U_matrix) + U_biases,name='logits')  # should be of shape = [batch_size x no.of.classes]
+
+#loss
+loss = tf.reduce_mean((tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=labels, name="cross_entropy")))
+train_step = tf.train.AdamOptimizer(FLAGS.learning_rate).minimize(loss)
+
+#predicted NER labels
+predicted_labels = tf.argmax(logits,axis=1)
+```
