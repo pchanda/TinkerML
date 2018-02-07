@@ -311,9 +311,9 @@ Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplicat
 
 $$
 \begin{align}
-word\_embeddings(t) &= \textbf{x} \cdot Word\_Vectors 
-h(t) &= ReLU( word\_embeddings(t) \cdot W\_matrix + b_1)
-\hat{y}^{(t)} &= softmax(h(t) \cdot U\_matrix + b_2)
+word\_embeddings(t) &= \textbf{x} \cdot Word\_Vectors \\\\
+h(t) &= ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) \\\\
+\hat{y}^{(t)} &= softmax(h(t) \cdot U\_matrix + b_2) \\\\
 Loss(t) &= CrossEntropy(y^{(t)}, \hat{y}(t))
 \end{align}
 $$
@@ -414,5 +414,5 @@ with tf.Session() as sess:
 ```
 
 ## Code for testing
-The model should train with precision and recall of more the 0.9 each. 
+The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8.
 
