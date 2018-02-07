@@ -368,6 +368,21 @@ train_step = tf.train.AdamOptimizer(FLAGS.learning_rate).minimize(loss)
 predicted_labels = tf.argmax(logits,axis=1)
 ```
 
+### Precision-Recall 
+Precision is calculated as the ratio of correct non-null labels predicted to the total number of non-null labels predicted. Recall is calculated as the ratio of correct non-null labels predicted to the total number of correct non-null labels. $$F_1$$ is the harmonic mean of the two.
+
+```python
+def precision_recall(predicted,actual):
+   no_correct_nonnull_predictions = np.sum([x==y and x!=defs.LBLS.index('O') for (x,y) in zip(predicted,actual)])
+   no_nonnull_predictions = np.sum([x!=defs.LBLS.index('O') for x in predicted])
+   no_nonnull_predictions = (no_nonnull_predictions+1) if no_nonnull_predictions==0 else no_nonnull_predictions
+   no_nonnull_labels = np.sum([y!=defs.LBLS.index('O') for y in actual])
+   no_nonnull_labels = (no_nonnull_labels+1) if no_nonnull_labels==0 else no_nonnull_labels
+   precision = no_correct_nonnull_predictions/no_nonnull_predictions
+   recall = no_correct_nonnull_predictions/no_nonnull_labels
+   return precision,recall
+```
+
 ## Create session for training
 
 Now lets fire up the tensorflow training session with the following code: 
@@ -400,3 +415,4 @@ with tf.Session() as sess:
 
 ## Code for testing
 The model should train with precision and recall of more the 0.9 each. 
+
