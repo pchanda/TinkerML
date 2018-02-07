@@ -308,7 +308,11 @@ $$ embedding(t) = \textbf{x} \cdot Word\_Vectors $$
 
 $$ h(t) = ReLU(embedding(t) \cdot W\_matrix + b_1) $$
 
-$  y(t) = softmax(h(t) \cdot U\_matrix + b_2)$$
+$$  \hat{y}(t) = softmax(h(t) \cdot U\_matrix + b_2)$$
+
+$$  Loss(t) = CrossEntropy(y_t, \hat{y}(t))$$
+
+
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix. The $$W\_matrix$$ are the weights from the embedding to the hidden layer. 
 
