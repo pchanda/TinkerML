@@ -416,5 +416,52 @@ with tf.Session() as sess:
 ```
 
 ## Code for testing
-The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8.
+The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8. Now onto testing. The code below follows in the line of the training code above to define variables and create the model : 
+
+
+{% highlight python linenos %}
+from __future__ import division
+import tensorflow as tf
+import numpy as np
+import os
+import cPickle as pickle
+import pandas as pd
+
+FLAGS = tf.app.flags.FLAGS
+
+#read file to test
+input_filename = os.path.join(FLAGS.data_dir,'dev.conll')
+#read word_dict saved during training
+with open(os.path.join(FLAGS.data_dir,'word_dict_train.pkl'),'rb') as fptr:
+   word_dict = pickle.load(fptr)
+
+line_batch,word_dict = get_input(input_filename,FLAGS.batch_size, FLAGS.num_examples_test, False, word_dict)
+
+window_size = defs.WINDOW_SIZE
+no_of_words_per_window =  2*window_size+1
+stacked_window_dim = no_of_words_per_window*FLAGS.embedding_dimension
+
+Word_Vectors = tf.get_variable(name='Word_Embedding_Matrix',shape=[FLAGS.vocabulary_size,FLAGS.embedding_dimension])
+W_matrix = utils.get_weights(name='W_Matrix',shape=[stacked_window_dim,FLAGS.hidden_dim])
+W_biases = utils.get_weights('hidden_biases',shape=[FLAGS.batch_size,FLAGS.hidden_dim])
+
+U_matrix = tf.get_variable('U_Matrix',shape=[FLAGS.hidden_dim,FLAGS.number_of_classes])
+U_biases = tf.get_variable('output_biases',shape=[FLAGS.batch_size,FLAGS.number_of_classes])
+
+window = line_batch[0]
+labels = line_batch[1]
+
+one_hot_words = tf.one_hot(window,depth=FLAGS.vocabulary_size,dtype=tf.float32)
+words_reshaped = tf.reshape(one_hot_words,[-1,FLAGS.vocabulary_size])
+
+word_embeddings = tf.matmul(words_reshaped,Word_Vectors)
+word_embeddings_stacked_per_window = tf.reshape(word_embeddings,shape=[-1,stacked_window_dim]) # shape = [batch_size x stacked_window_dim]
+
+hidden_layer = tf.nn.relu(tf.matmul(word_embeddings_stacked_per_window,W_matrix) + W_biases,name='hidden_layer')
+#loss
+loss = tf.reduce_mean((tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=labels, name="cross_entropy")))
+
+#predicted NER labels
+predicted_labels = tf.argmax(logits,axis=1)
+{% endhighlight %}
 
