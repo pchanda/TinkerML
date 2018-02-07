@@ -309,14 +309,14 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
-Pritam
+Chanda
 
 $$
 \begin{align}
-word\_embeddings(t) &= \textbf{x} \cdot Word\_Vectors \\\\
-h(t) &= ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) \\\\
-\hat{y}^{(t)} &= softmax(h(t) \cdot U\_matrix + b_2) \\\\
-Loss(t) &= CrossEntropy(y^{(t)}, \hat{y}(t))
+& word\_embeddings(t) = \textbf{x} \cdot Word\_Vectors \\\\
+& h(t) = ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) \\\\
+& \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2) \\\\
+& Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))
 \end{align}
 $$
 
