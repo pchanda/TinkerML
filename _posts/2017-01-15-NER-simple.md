@@ -3,7 +3,7 @@ layout: post
 title: Simple Named entity Recognition (NER) with tensorflow
 ---
 
-Given a peice of text, NER seeks to identify named entities in text and classify them  into various categories such as names of persons, organizations, locations, expressions of times, quantities, percentages, etc. Here we just want to build a model to predict 5 classes for every word in a sentence: PER (person), ORG (organization), LOC (location), MISC (miscellaneous) and O(null class, not a NER).  
+Given a peice of text, NER seeks to identify named entities in text and classify them  into various categories such as names of persons, organizations, locations, expressions of times, quantities, percentages, etc. Here we just want to build a model to predict $$N_c = $$ 5 classes for every word in a sentence: PER (person), ORG (organization), LOC (location), MISC (miscellaneous) and O(null class, not a NER).  
 
 ## Reading the training data
 For training, use the file 'train.conll'. A snapshot of the file looks like: 
@@ -304,17 +304,17 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that $$\cdot$$ indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
-$$ embedding(t) = \textbf{x} \cdot Word\_Vectors $$
+1. $$ embedding(t) = \textbf{x} \cdot Word\_Vectors $$
 
-$$ h(t) = ReLU(embedding(t) \cdot W\_matrix + b_1) $$
+2. $$ h(t) = ReLU(embedding(t) \cdot W\_matrix + b_1) $$
 
-$$  \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2)$$
+3. $$ \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2)$$
 
-$$  Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))$$
+4. $$  Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))$$
 
-Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension (2 x WINDOW_SIZE + 1) x vocabulary_size, each window has (2 x WINDOW_SIZe + 1) words.
+Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, each window has (2 x WINDOW_SIZE + 1) words.
 
-The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix. The $$W\_matrix$$ are the weights from the embedding to the hidden layer. 
+The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (1. in model above) to the hidden layer (2. in model above) with $$d_h$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (3. in model above).   
 
 ```python
 window_size = defs.WINDOW_SIZE
