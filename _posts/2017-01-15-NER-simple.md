@@ -416,7 +416,7 @@ with tf.Session() as sess:
 ```
 
 ## Code for testing
-The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8. Now onto testing. The code below follows in the line of the training code above to define variables and create the model : 
+The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8. Now onto testing. The code below follows in the line of the training code above to define variables and create the model. But we must read the word_dict created during training (saved in file 'word_dict_train.pkl') to get the correct integer ids for each word during testing.
 
 
 {% highlight python linenos %}
