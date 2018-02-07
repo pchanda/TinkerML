@@ -302,17 +302,17 @@ def load_word_embeddings(word_dict,vocab_file,embedding_file):
 embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # read pre-trained word embeddings.
 ```
 
-Now comes the model creation. Note that $$\cdot$$ indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
+Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
-1. $$ embedding(t) = \textbf{x} \cdot Word\_Vectors $$
+1. $$ word\_embeddings(t) = \textbf{x} \cdot Word\_Vectors $$
 
-2. $$ h(t) = ReLU(embedding(t) \cdot W\_matrix + b_1) $$
+2. $$ h(t) = ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) $$
 
 3. $$ \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2)$$
 
 4. $$  Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))$$
 
-Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, each window has (2 x WINDOW_SIZE + 1) words.
+Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, as each window has (2 x WINDOW_SIZE + 1) words.
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (1. in model above) to the hidden layer (2. in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (3. in model above).   
 
@@ -346,4 +346,32 @@ train_step = tf.train.AdamOptimizer(FLAGS.learning_rate).minimize(loss)
 
 #predicted NER labels
 predicted_labels = tf.argmax(logits,axis=1)
+```
+
+Now lets fire up the tensorflow training session with the following code: 
+
+```python
+saver = tf.train.Saver(max_to_keep=FLAGS.max_to_keep) #to save the models duing training.
+with tf.Session() as sess:
+     init = tf.initialize_all_variables()
+     sess = tf.Session()
+     sess.run(init)
+     coord = tf.train.Coordinator()
+     threads = tf.train.start_queue_runners(sess=sess,coord=coord)
+
+     for step in range(10000):
+        _,loss_v,predictions,actual = sess.run([train_step,loss,predicted_labels,labels])
+        pr,re = utils.precision_recall(predictions,actual)
+        f1 = 2*pr*re/(pr + re + 1e-10)
+        print step,' loss=',loss_v,' pr=',pr,' re=',re,' F1=',f1
+        #print zip(predictions,actual)
+        print '----------------------------------------'
+
+        if step % 500 == 0 and step>=500:  #save model every 500 steps
+           #save the model
+           ckptfile = FLAGS.model_dir+'model_'+str(step)+'.ckpt'
+           ckptfile = saver.save(sess, ckptfile)
+
+     coord.request_stop()
+     coord.join(threads)
 ```
