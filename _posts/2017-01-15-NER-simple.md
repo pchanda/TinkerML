@@ -59,8 +59,9 @@ def read_conll_file(fstream):
         ret.append((current_toks, current_lbls))
     return ret
 ```
-For every sentence, this will return a list of [ words, labels] where words is a list of words in the sentence and labels contains the NER labels. For example element 0 in the list returned is
-```
+For every sentence, this will return a list of [words, labels] where words is a list of words in the sentence and labels contains the NER labels. For example element 0 in the list returned is
+
+```python
 (['EU', 'rejects', 'German', 'call', 'to', 'boycott', 'British', 'lamb', '.'],['ORG', 'O', 'MISC', 'O', 'O', 'O', 'MISC', 'O', 'O'])
 ```
 
@@ -322,7 +323,7 @@ $$
 
 Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, as each window has (2 x WINDOW_SIZE + 1) words.
 
-The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (line 1 in model above) to the hidden layer (line 2 in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (line 3 in model above).   
+The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (line 1 in model above) to the hidden layer (line 2 in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (line 3 in model above).
 
 Define utility functions to create weight and bias tensors:
 ```python
@@ -369,7 +370,8 @@ train_step = tf.train.AdamOptimizer(FLAGS.learning_rate).minimize(loss)
 #predicted NER labels
 predicted_labels = tf.argmax(logits,axis=1)
 ```
-
+Again, note that $$Word\_Vectors$$ matrix although initialized with pre-trained word embeddings, it is a trainable variable in tensorflow (just like $$W$$ and $$U$$) and the word vectors in it will get updated by back-propagation during training.
+ 
 ### Precision-Recall 
 Precision is calculated as the ratio of correct non-null labels predicted to the total number of non-null labels predicted. Recall is calculated as the ratio of correct non-null labels predicted to the total number of correct non-null labels. $$F_1$$ is the harmonic mean of the two.
 
