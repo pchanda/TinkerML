@@ -64,7 +64,7 @@ For every sentence, this will return a list of [ words, labels] where words is a
 (['EU', 'rejects', 'German', 'call', 'to', 'boycott', 'British', 'lamb', '.'],['ORG', 'O', 'MISC', 'O', 'O', 'O', 'MISC', 'O', 'O'])
 ```
 
-## Tokenize the training data, create sliding windows etc.
+### Tokenize the training data, create sliding windows etc.
 Next we will convert each word to a unique integer id. First we add some global definitions:
 
 ```python
@@ -178,7 +178,7 @@ print windowed_data
 print word_dict
 ```
 
-## Tensorflow queues for creating input pipeline to read the training data
+### Tensorflow queues for creating input pipeline to read the training data
 Next we will use tensorflow queues to read the training data. This will take care of batching and shuffling. First lets add the necessary definitions:
 
 ```python
