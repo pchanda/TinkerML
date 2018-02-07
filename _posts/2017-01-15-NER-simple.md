@@ -304,6 +304,7 @@ embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # r
 
 Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
+`
 1. $$ word\_embeddings(t) = \textbf{x} \cdot Word\_Vectors $$
 
 2. $$ h(t) = ReLU( word\_embeddings(t) \cdot W\_matrix + b_1) $$
@@ -311,6 +312,7 @@ Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplicat
 3. $$ \hat{y}^{(t)} = softmax(h(t) \cdot U\_matrix + b_2)$$
 
 4. $$  Loss(t) = CrossEntropy(y^{(t)}, \hat{y}(t))$$
+`
 
 Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, as each window has (2 x WINDOW_SIZE + 1) words.
 
