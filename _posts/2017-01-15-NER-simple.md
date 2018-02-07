@@ -322,7 +322,7 @@ $$
 
 Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $$\textbf{x}$$ vector is a concatenation of all the vectors $$x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}$$. So $$\textbf{x}$$ has dimension $$ \tilde d = $$ (2 x WINDOW_SIZE + 1) x vocabulary_size, as each window has (2 x WINDOW_SIZE + 1) words.
 
-The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (1. in model above) to the hidden layer (2. in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (3. in model above).   
+The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (line 1 in model above) to the hidden layer (line 2 in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (line 3 in model above).   
 
 Define utility functions to create weight and bias tensors:
 ```python
@@ -385,7 +385,7 @@ def precision_recall(predicted,actual):
    return precision,recall
 ```
 
-## Create session for training
+### Create session for training
 
 Now lets fire up the tensorflow training session with the following code: 
 
@@ -419,7 +419,7 @@ with tf.Session() as sess:
 The model should train with precision and recall of more the 0.9 each and $$F_1$$ more than 0.8. Now onto testing. The code below follows in the line of the training code above to define variables and create the model. But we must read the word_dict created during training (saved in file 'word_dict_train.pkl') to get the correct integer ids for each word during testing.
 
 
-{% highlight python linenos %}
+```python
 from __future__ import division
 import tensorflow as tf
 import numpy as np
@@ -463,5 +463,37 @@ loss = tf.reduce_mean((tf.nn.sparse_softmax_cross_entropy_with_logits(logits=log
 
 #predicted NER labels
 predicted_labels = tf.argmax(logits,axis=1)
-{% endhighlight %}
+```
 
+### Create session for testing
+Run the tensorflow testing session with the following code. Do not forget to do 'saver.restore' which will load the tensors defined above with values saved during training from the model file:
+
+```python
+saver = tf.train.Saver()
+with tf.Session() as sess:
+     coord = tf.train.Coordinator()
+     threads = tf.train.start_queue_runners(sess=sess,coord=coord)
+     saver.restore(sess, FLAGS.model_dir+'model_9000.ckpt')
+
+     pr_labels = []
+     act_labels = []
+     for step in range(5000):
+        loss_v,predictions,actual = sess.run([loss,predicted_labels,labels])
+        pr,re = utils.precision_recall(predictions,actual)
+        f1 = 2*pr*re/(pr + re + 1e-10)
+        pr_labels += list(predictions)
+        act_labels +=  list(actual)
+        print step,' loss=',loss_v,' pr=',pr,' re=',re,' F1=',f1
+        #print zip(predictions,actual)
+        print '----------------------------------------'
+
+     pr,re = utils.precision_recall(predictions,actual)
+     f1 = 2*pr*re/(pr + re + 1e-10)
+     cf = pd.crosstab(pd.Series(act_labels), pd.Series(pr_labels), rownames=['True'], colnames=['Predicted'], margins=True)
+     print 'precision = ',pr,' recall = ',re, ' f1=',f1
+     print 'Confusion Matrix = ',cf
+     coord.request_stop()
+     coord.join(threads)
+```
+
+This should result in precision of about 0.83, recall of 0.83 and $$F_1$ score of about 0.75 (Not bad for the simple model!!!).
