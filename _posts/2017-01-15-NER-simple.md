@@ -8,7 +8,7 @@ Given a peice of text, NER seeks to identify named entities in text and classify
 ## Reading the training data
 For training, use the file 'train.conll' (see [data](https://github.com/pchanda/NER-FeedForward/tree/master/real_data/) for data files). A snapshot of the file looks like: 
 
-```
+```python
 -DOCSTART-      O
 
 EU      ORG
