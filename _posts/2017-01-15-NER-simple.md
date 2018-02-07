@@ -261,6 +261,8 @@ def get_input(data_filename, batch_size, num_examples, shuffle, word_dict=None):
 
 Now with the reading and input queues taken care of, lets define our model and train. Input for training is a batch of windows 'batch' in the return value of the function 'get_input(...)' above. Lets add the ops to read the data.
 
+### Definitions
+
 ```python
 FLAGS = tf.app.flags.FLAGS
 
@@ -278,6 +280,8 @@ with open(os.path.join(FLAGS.data_dir,'word_dict_train.pkl'),'wb') as fptr:
    
 ```
 
+### Read pre-trained word vectors
+
 Each word (and integer) will be one-hot encoded and used to pull out the corresponding word vector from the embedding matrix $$Word\_Vectors$$ (or the matrix of word vectors (shape: vocabulary_size x embedding_dimension)). The function 'load_embedding_matrix(...)' will read the pre-trained embedding matrix of the words present in our vocabulary. The pre-trained embedding matrix will serve to initialize the $$Word\_Vectors$$ matrix, which will also get updated during our training, more onto this later. 
 
 ```python
@@ -288,7 +292,7 @@ def load_word_embeddings(word_dict,vocab_file,embedding_file):
    fstream_2 = open(embedding_file,'rb')
    for word,vector in zip(fstream_1,fstream_2):
       word = word.strip()
-      if word.isdigit(): word = defs.NUM
+      if word.isdigit(): word = NUM
       else: word = word.lower()
       vector = np.array(list(map(float,vector.strip().split(" "))))
       if word in word_dict:
@@ -300,6 +304,8 @@ def load_word_embeddings(word_dict,vocab_file,embedding_file):
 
 embeddings = utils.load_word_embeddings(word_dict,vocab_file,embedding_file) # read pre-trained word embeddings.
 ```
+
+### Create the model
 
 Now comes the model creation. Note that '$$\cdot$$' indicates matrix multiplication. Breifly, given a input window $$ \textbf{x} = [ x^{(t-w)}, x^{(t)}, ... ; x^{(t+w)}]$$ (center word is $$x^{(t)}$$) model is :
 
@@ -316,6 +322,20 @@ Each $$x^{t}$$ is one-hot encoded (vector of dimension = vocabulary_size). The $
 
 The embeddings read above are used to initialize the $$Word\_Vectors$$ matrix (dimensions vocabulary_size x embedding_dimension). The $$W\_matrix$$ ($$ \tilde d \times d_h $$) are the weights from the embedding layer (1. in model above) to the hidden layer (2. in model above) with $$d_h$$ neurons. The $$U\_matrix$$ ($$ d_h \times N_c $$) are the weights from the hidden layer (2. in model above) to the output layer (3. in model above).   
 
+Define utility functions to create weight and bias tensors:
+```python
+def get_weights(name, shape, stddev=0.02, dtype=tf.float32, initializer=None):
+    if initializer is None:
+      initializer = tf.truncated_normal_initializer(stddev = stddev, dtype=dtype)
+    return tf.get_variable(name, shape, initializer = initializer, dtype=dtype)
+
+def get_biases(name, shape, val=0.0, dtype=tf.float32, initializer=None):
+    if initializer is None:
+       initializer = tf.constant_initializer(val)
+    return tf.get_variable(name, shape, initializer = initializer, dtype=dtype)
+```
+
+### Code for the model
 ```python
 window_size = WINDOW_SIZE
 no_of_words_per_window =  2*window_size+1
