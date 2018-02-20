@@ -25,7 +25,10 @@ import sys
  RC :-1]       RC :-1]       RC :-1]
 
 '''
+```
 
+
+```python
 vocab = {'the': 0, 'old': 1, 'cat': 2} # word to integer map (node ids in the tree above)
 node_words = ['the', 'old', 'cat', '', '']
 is_leaf = [True, True, True, False, False] 
@@ -92,6 +95,7 @@ with tf.Session() as sess:
     print('Node Tensors : ',node_tensors_)
 ```
 
+```ruby
     WARNING:tensorflow:From C:\local\Anaconda3-4.1.1-Windows-x86_64\lib\site-packages\tensorflow\python\util\tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
     Instructions for updating:
     Use `tf.global_variables_initializer` instead.
@@ -106,3 +110,4 @@ with tf.Session() as sess:
     
      [[ 0.82129437  0.          0.          1.02332771  0.06781948]]]
     
+```
