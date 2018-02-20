@@ -95,7 +95,9 @@ with tf.Session() as sess:
     print('Node Tensors : ',node_tensors_)
 ```
 
-```
+## Output 
+
+```ruby
     Completed  5  loops
     Node Tensors :  [[[-0.60116285  0.67330247  0.46631962  0.00616211  0.61571413]]
     
