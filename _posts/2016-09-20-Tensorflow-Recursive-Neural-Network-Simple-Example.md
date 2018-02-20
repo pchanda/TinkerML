@@ -5,6 +5,7 @@ import tensorflow as tf
 import sys
 
 '''   Tree to be modeled 
+LC : Left Child,   RC: Right Child 
 
              [id:4
               LC:0
