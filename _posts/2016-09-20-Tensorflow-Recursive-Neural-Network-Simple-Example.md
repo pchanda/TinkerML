@@ -95,10 +95,7 @@ with tf.Session() as sess:
     print('Node Tensors : ',node_tensors_)
 ```
 
-```ruby
-    WARNING:tensorflow:From C:\local\Anaconda3-4.1.1-Windows-x86_64\lib\site-packages\tensorflow\python\util\tf_should_use.py:107: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
-    Instructions for updating:
-    Use `tf.global_variables_initializer` instead.
+```
     Completed  5  loops
     Node Tensors :  [[[-0.60116285  0.67330247  0.46631962  0.00616211  0.61571413]]
     
