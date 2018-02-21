@@ -3,6 +3,10 @@ layout: post
 title: Read csv file with variable number of fields using Tensorflow
 ---
 
+
+
+
+
 ```python
 import tensorflow as tf
 import numpy as np
@@ -42,6 +46,6 @@ The output array is nicely padded with 'NA' for the missing values.
      ['record_2' '10' '20' '30' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA']
      ['record_3' '5' '6' '7' '8' '9' '10' '11' '12' 'NA' 'NA']
      ['record_4' '41' '42' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA']
-     [b'record_5' b'100' b'200' b'300' b'400' b'500' b'600' b'700' b'800'
-      b'900' b'1000']]
+     ['record_5' '100' '200' '300' '400' '500' '600' '700' '800'
+      '900' '1000']]
 ```    
