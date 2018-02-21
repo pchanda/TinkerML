@@ -1,5 +1,9 @@
 
-## Read csv file with variable number of fields using Tensorflow.
+---
+layout: post
+title: Read csv file with variable number of fields using Tensorflow.
+---
+
 
 ```python
 import tensorflow as tf
@@ -28,6 +32,7 @@ with tf.Session() as sess:
 ```
 
 ## Output 
+The output array is nicely padded with 'NA' for the missing values. 
 
 ```python
     Input data with shape (5,) = 
