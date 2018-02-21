@@ -31,14 +31,14 @@ with tf.Session() as sess:
 
 ```python
     Input data with shape (5,) = 
-     [b'record_1,1,2,3,4' b'record_2,10,20,30' b'record_3,5,6,7,8,9,10,11,12'
-     b'record_4,41,42' b'record_5,100,200,300,400,500,600,700,800,900,1000'] 
+     ['record_1,1,2,3,4' 'record_2,10,20,30' 'record_3,5,6,7,8,9,10,11,12'
+     'record_4,41,42' 'record_5,100,200,300,400,500,600,700,800,900,1000'] 
     
     Padded data with shape (5, 11) = 
-     [[b'record_1' b'1' b'2' b'3' b'4' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA']
-     [b'record_2' b'10' b'20' b'30' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA']
-     [b'record_3' b'5' b'6' b'7' b'8' b'9' b'10' b'11' b'12' b'NA' b'NA']
-     [b'record_4' b'41' b'42' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA']
+     [['record_1' '1' '2' '3' '4' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA']
+     ['record_2' '10' '20' '30' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA']
+     ['record_3' '5' '6' '7' '8' '9' '10' '11' '12' 'NA' 'NA']
+     ['record_4' '41' '42' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA' 'NA']
      [b'record_5' b'100' b'200' b'300' b'400' b'500' b'600' b'700' b'800'
       b'900' b'1000']]
 ```    
