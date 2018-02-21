@@ -3,11 +3,10 @@ layout: post
 title: Read csv file with variable number of fields using Tensorflow
 ---
 
-
-
-
-
 ```python
+
+
+
 import tensorflow as tf
 import numpy as np
 
