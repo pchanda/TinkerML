@@ -1,4 +1,5 @@
 
+## Read csv file with variable number of fields using Tensorflow.
 
 ```python
 import tensorflow as tf
@@ -26,6 +27,9 @@ with tf.Session() as sess:
     print('Padded data with shape {0} = \n'.format(Y.shape),Y)
 ```
 
+## Output 
+
+```python
     Input data with shape (5,) = 
      [b'record_1,1,2,3,4' b'record_2,10,20,30' b'record_3,5,6,7,8,9,10,11,12'
      b'record_4,41,42' b'record_5,100,200,300,400,500,600,700,800,900,1000'] 
@@ -37,4 +41,4 @@ with tf.Session() as sess:
      [b'record_4' b'41' b'42' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA' b'NA']
      [b'record_5' b'100' b'200' b'300' b'400' b'500' b'600' b'700' b'800'
       b'900' b'1000']]
-    
+```    
