@@ -3,9 +3,9 @@ layout: post
 title: Read csv file with variable number of fields using Tensorflow
 ---
 
+
+
 ```python
-
-
 
 import tensorflow as tf
 import numpy as np
@@ -17,7 +17,6 @@ with open(filename,'r') as fin:
         x = line.strip()
         data_read  += [x]
         
-#data_read = np.array(data_read)
 
 data_tensor = tf.convert_to_tensor(data_read, dtype=tf.string)
 sparse_tensor = tf.string_split(data_tensor,',') #sparse tensor
