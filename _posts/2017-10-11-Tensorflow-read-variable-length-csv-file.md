@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Read csv file with variable number of fields using Tensorflow
