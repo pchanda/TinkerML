@@ -3,7 +3,7 @@ layout: post
 title: Simple Named entity Recognition (NER) with tensorflow
 ---
 
-Given a peice of text, NER seeks to identify named entities in text and classify them  into various categories such as names of persons, organizations, locations, expressions of times, quantities, percentages, etc. Here we just want to build a model to predict $$N_c = $$ 5 classes for every word in a sentence: PER (person), ORG (organization), LOC (location), MISC (miscellaneous) and O(null class, not a NER).  
+Given a piece of text, NER seeks to identify named entities in text and classify them  into various categories such as names of persons, organizations, locations, expressions of times, quantities, percentages, etc. Here we just want to build a model to predict $$N_c = $$ 5 classes for every word in a sentence: PER (person), ORG (organization), LOC (location), MISC (miscellaneous) and O(null class, not a NER).  
 
 ## Reading the training data
 For training, use the file 'train.conll' (see [data](https://github.com/pchanda/NER-FeedForward/tree/master/real_data/) for data files). A snapshot of the file looks like: 
