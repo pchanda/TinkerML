@@ -3,7 +3,7 @@ layout: post
 title: Read csv file with variable number of fields using Tensorflow
 ---
 
-Input data can be downloaded from [data](https://github.com/pchanda/pchanda.github.io/blob/master/data/in.txt)
+[Input test data](https://github.com/pchanda/pchanda.github.io/blob/master/data/in.txt)
 
 
 ```python
