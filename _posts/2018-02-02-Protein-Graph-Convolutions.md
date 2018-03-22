@@ -88,10 +88,10 @@ dropout_keep_prob = tf.placeholder(tf.float32,shape=[],name="dropout_keep_prob")
 
 I will describe the following network architecture : 
 ```python
-ligand-residue -->  ligand_graph_conv_layer1 -->  ligand_graph_conv_layer2   
-                                                                         \ 
+ligand-residue --> ligand_graph_conv_layer1 --> ligand_graph_conv_layer2   
+                                                                         |
                                                                           --> merged --> dense1 --> dense2 --> prediction 
-                                                                         / 
+                                                                         | 
 receptor-residue --> receptor_graph_conv_layer1 --> receptor_graph_conv_layer1
 ```
 
