@@ -1,7 +1,7 @@
 
 This post shows how to implement a simple graph convolutional deep learning method to predict interfaces between protein residues, i.e. given a pair of interacting proteins, can we classify a pair of amino acid residues as interacting or not. This is based on the paper published in NIPS 2017 (Protein Interface Prediction using Graph Convolutional Networks).
 
-The code and data here follows the published [repository](https://github.com/fouticus/pipgcn/).
+The code and data here is a simplified and easy to understand version based on the published [repository](https://github.com/fouticus/pipgcn/). My goal is to quickly introduce the readers to a deep learning architecture that uses graph convolutions without getting bogged down with the internals of protein structure.
 
 First I start with the description of the training data and then how we can build a graph convolutional model step by step using the data to solve the protein interface prediction problem. First load the training data 'train.cpkl' as :
 
