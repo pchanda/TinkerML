@@ -7,18 +7,20 @@ The code here follows the published repository, and uses the [data] (https://zen
 ```python
 import pickle
 import os
-train_data_file = os.path.join('./data/','train.cpkl')  #assumes train.cpkl is placed in a local directory 'data'. 
+#assumes train.cpkl is placed in a local directory 'data'.
+train_data_file = os.path.join('./data/','train.cpkl')   
 train_list, train_data = pickle.load(open(train_data_file,'rb'),encoding='latin1')
 print('No of molecules in Training = ', len(train_data))
 molecule_pair = train_data[0]
 print(molecule_pair.keys())
 ```
+Output:
+```
+No of molecules in Training =  175
+dict_keys(['l_vertex', 'complex_code', 'r_hood_indices', 'l_hood_indices', 'r_vertex', 'label', 'r_edge', 'l_edge'])
+```    
 
-    No of molecules in Training =  175
-    dict_keys(['l_vertex', 'complex_code', 'r_hood_indices', 'l_hood_indices', 'r_vertex', 'label', 'r_edge', 'l_edge'])
-    
-
-The training data has 175 pairs of molecules. Each molecule-pair is a dictionary with 8 keys. It has entries for 'ligand molecule' denoted by "l\_" and receptor molecule denoted by "r\_".
+Here, the training data has 175 pairs of molecules. Each molecule-pair is a dictionary with 8 keys. It has entries for 'ligand molecule' denoted by "l\_" and receptor molecule denoted by "r\_".
 
 
 ```python
@@ -37,7 +39,8 @@ print('--------------------------------------------------')
 print("label = [%d,%d]"%(molecule_pair['label'].shape))
 print(molecule_pair['label'][0:5,:])
 ```
-
+Output:
+```
     l_vertex = [185,70]
     l_edge = [185,20,2]
     l_hood_indices = [185,20,1]
@@ -52,7 +55,7 @@ print(molecule_pair['label'][0:5,:])
      [115 301   1]
      [ 10 286   1]
      [ 34 352   1]]
-    
+```    
 
 Thus for this molecule pair, the ligand molecule has 185 residues each with 20 neighbors (fixed in this dataset). The receptor molecule has 362 residues each with 20 neighbors again. The label indicates the +1/-1 status of every residue pair indicating whether the pair of residues are interacting or not. Note that not all pairs of residues are present in the label as the authors have chosen to downsample the negative examples for an overall ratio of 10:1 of negative to positive examples. With this description, lets move onto define the placeholder tensors for building the graph convolutional network.
 
@@ -135,7 +138,8 @@ def node_average_model(input, params, filters=None, dropout_keep_prob=1.0, train
     return h, params
 ```
 
-The equation behind the tensor operations in the above function 'node_average_model' are in ![Equation] (https://github.com/pchanda/Graph_convolution_with_proteins/blob/master/data/Equation.png).
+The equation behind the tensor operations in the above function 'node_average_model' are in 
+![an image alt text]({{ site.baseurl }}/images/GraphConvEq.png "Graph-Conv-Equation"){:height="30%" width="30%"}
 
 
 ```python
@@ -217,7 +221,8 @@ with tf.name_scope(name):
         dense2_output = dense(dense1_output, out_dims=1, dropout_keep_prob=0.5, nonlin=False, trainable=True)
 ```
 
-Add the final layer, essentially averaging the predictions from both orders of combinations. See ![Architecture](https://github.com/pchanda/Graph_convolution_with_proteins/blob/master/data/Picture1.png).
+Add the final layer, essentially averaging the predictions from both orders of combinations. See 
+![an image alt text]({{ site.baseurl }}/images/GraphConvArch1.png "Architecture"){:height="30%" width="30%"}
 
 
 ```python
