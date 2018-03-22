@@ -1,7 +1,7 @@
 
 This post shows how to implement a simple graph convolutional deep learning method to predict interfaces between protein residues, i.e. given a pair of interacting proteins, can we classify a pair of amino acid residues as interacting or not. This is based on the paper published in NIPS 2017 (Protein Interface Prediction using Graph Convolutional Networks).
 
-The code and data here is a simplified and easy to understand version based on the published [repository](https://github.com/fouticus/pipgcn/). My goal is to quickly introduce the readers to a deep learning architecture that uses graph convolutions without getting bogged down with the internals of protein structure.
+The code and data here is a simplified and easy to understand version based on the published [repository](https://github.com/fouticus/pipgcn/). My goal is to quickly introduce the readers to a deep learning architecture that uses graph convolutions without getting bogged down with the internals of protein structure. The full implementation of the things discussed below can be found at [full code](https://github.com/pchanda/Graph_convolution_with_proteins/).
 
 First I start with the description of the training data and then how we can build a graph convolutional model step by step using the data to solve the protein interface prediction problem. First load the training data 'train.cpkl' as :
 
@@ -61,7 +61,7 @@ Output:
      [ 34 352   1]]
 ```    
 
-Thus for this molecule pair, the ligand molecule has 185 residues each with 20 neighbors (fixed in this dataset). The receptor molecule has 362 residues each with 20 neighbors again. The label indicates the +1/-1 status of every residue pair indicating whether the pair of residues are interacting or not. Note that not all pairs of residues are present in the label as the authors have chosen to downsample the negative examples for an overall ratio of 10:1 of negative to positive examples. With this description, lets move onto define the placeholder tensors for building the graph convolutional network.
+Thus for this molecule pair, the ligand molecule has 185 residues each with 20 neighbors (fixed in this dataset). The receptor molecule has 362 residues each with 20 neighbors again. The label indicates the +1/-1 status of every residue pair indicating whether the pair of residues are interacting(+1) or not(-1). Note that not all pairs of residues are present in the label as the authors have chosen to downsample the negative examples for an overall ratio of 10:1 of negative to positive examples. With this description, lets move onto define the placeholder tensors for building the graph convolutional network.
 
 
 ```python
@@ -86,7 +86,7 @@ labels = tf.placeholder(tf.float32,[None],"labels")
 dropout_keep_prob = tf.placeholder(tf.float32,shape=[],name="dropout_keep_prob")
 ```
 
-I will describe the following network architecture : 
+The code implements the following network architecture : 
 ```python
 ligand-residue --> ligand_graph_conv_layer1 --> ligand_graph_conv_layer2   
                                                                          |
@@ -95,7 +95,7 @@ ligand-residue --> ligand_graph_conv_layer1 --> ligand_graph_conv_layer2
 receptor-residue --> receptor_graph_conv_layer1 --> receptor_graph_conv_layer1
 ```
 
-So input1 will represent the input to th network containing information for ligand residue of the pair, analogously, input2 will represent the input to th network containing information for receptor residue of the pair. We will use the following function to perform the graph convolution (e.g. in ligand_graph_conv_layer1 and receptor_graph_conv_layer2) :
+So input1 will represent the input to the network containing information for ligand residue of the pair, analogously, input2 will represent the input to th network containing information for receptor residue of the pair. We will use the following function 'node_average_model' to perform the graph convolution (e.g. in ligand_graph_conv_layer1 and receptor_graph_conv_layer2) :
 
 ```python
 import numpy as np
