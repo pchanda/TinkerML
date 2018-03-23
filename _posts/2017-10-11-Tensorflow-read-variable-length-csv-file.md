@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Read csv file with variable number of fields using Tensorflow
+categories: ['Tensorflow']
 ---
 
 [Input test data](https://github.com/pchanda/pchanda.github.io/blob/master/data/in.txt)
