@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ising Model
-categories: ['MArkov Random Field']
+categories: ['Graphical Models']
 ---
 Please refer to my earlier posts on [MRF](https://pchanda.github.io/MarkovRandomFields/) and [GRF](https://pchanda.github.io/GibbsRandomField/) for getting used to the notations. If we consider clique potentials for sizes of upto 2, the energy function is the sum of clique potentials of all cliques of size 1 and size 2,
 
