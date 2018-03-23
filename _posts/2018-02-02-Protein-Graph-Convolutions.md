@@ -1,3 +1,8 @@
+---
+layout: post
+title: Graph Convolutions using Protein structures
+categories: ['Computational Biology']
+---
 
 This post shows how to implement a simple graph convolutional deep learning method to predict interfaces between protein residues, i.e. given a pair of interacting proteins, can we classify a pair of amino acid residues as interacting or not. This is based on the paper published in NIPS 2017 (Protein Interface Prediction using Graph Convolutional Networks).
 
