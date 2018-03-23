@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Gibbs Random Field (GRF)
-categories: ['MArkov Random Field']
+categories: ['Graphical Models']
 ---
 
 Lets see what is a GRF and how it is connected to the MRF. If you are new to my blogs, please visit my blog on [MRF](https://pchanda.github.io/MarkovRandomFields/) to get familiar with the notations. 
