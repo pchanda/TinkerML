@@ -1,3 +1,8 @@
+---
+layout: post
+title: Tensorflow Multinomial Logistic Regression
+categories: ['Tensorflow']
+---
 
 Implementing simple multiclass logistic regression with Tensorflow.
 
@@ -121,7 +126,9 @@ with tf.Session() as sess:
           print(step,loss_v,accuracy_v)
 
 ```
+Training output: 
 
+```python
     0 1.10255 0.272
     500 0.173238 0.98
     1000 0.117338 0.993
@@ -142,4 +149,4 @@ with tf.Session() as sess:
     8500 0.0153565 0.999
     9000 0.0137921 0.999
     9500 0.0123726 0.999
-    
+```    
