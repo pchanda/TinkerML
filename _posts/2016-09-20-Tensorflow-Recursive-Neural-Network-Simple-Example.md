@@ -1,7 +1,7 @@
 
 ---
 layout: post
-title: Tensorflow Recursive Neural Network (ReNN) Simple Example
+title: Tensorflow Recursive Neural Network (ReNN) simple example
 categories: ['Tensorflow']
 ---
 
