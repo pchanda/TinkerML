@@ -1,9 +1,9 @@
-
 ---
 layout: post
 title: Tensorflow Recursive Neural Network (ReNN) simple example
 categories: ['Tensorflow']
 ---
+
 
 ```python
 import tensorflow as tf
