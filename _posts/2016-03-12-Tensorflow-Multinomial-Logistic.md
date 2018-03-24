@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Tensorflow Multinomial Logistic Regression
+published: false
 categories: ['Tensorflow']
 ---
 
