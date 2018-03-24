@@ -1,3 +1,8 @@
+---
+layout: post
+title: Tensorflow TensorArray Simple Example
+categories: ['Tensorflow']
+---
 
 A small example on how to use Tensorflow TensorArray. 
 
@@ -38,10 +43,13 @@ with tf.Session() as sess:
     
 ```
 
+Output:
+
+```python
     no of loops completed =  5
     Final content of tensorarray =  [[1 1 1]
      [2 2 2]
      [3 3 3]
      [4 4 4]
      [5 5 5]]
-    
+```    
