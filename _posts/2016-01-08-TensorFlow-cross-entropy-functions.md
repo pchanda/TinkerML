@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tensorflow comparing Cross Entropy Functions: softmax_cross_entropy_with_logits , sparse_softmax_cross_entropy_with_logits
+title: Comparing Cross Entropy Functions: softmax\_cross_entropy\_with\_logits , sparse\_softmax\_cross\_entropy\_with\_logits
 published: true
 categories: ['Tensorflow']
 ---
