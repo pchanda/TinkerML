@@ -173,3 +173,12 @@ print("Test Correlation Score: %f" % test_scores)
 ```
 
 Running the code gives fairly good results:
+
+```python
+Evaluating on train data
+computed_metrics: [0.9392767602441462, 0.9277393858360276]
+Train Correlation Score: 0.933508
+Evaluating on test data
+computed_metrics: [0.9144943961223863, 0.9001201987327392]
+Test Correlation Score: 0.907307
+```
