@@ -1,3 +1,8 @@
+---
+layout: post
+title: Graph Convolutions to predict Solubility for Molecules
+categories: ['Computational Chemistry','DeepLearning']
+---
 
 This writeup shows how to use graph convolutions for a regression like problem using the [DeepChem](https://deepchem.io/) library. 
 
