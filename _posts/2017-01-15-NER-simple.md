@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple Named entity Recognition (NER) with tensorflow
-categories: ['NLP']
+categories: ['NLP','DeepLearning']
 tags: [blogging]
 ---
 
