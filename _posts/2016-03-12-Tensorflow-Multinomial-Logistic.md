@@ -2,7 +2,7 @@
 layout: post
 title: Tensorflow Multinomial Logistic Regression
 published: false
-categories: ['Tensorflow']
+categories: ['Tensorflow','DeepLearning']
 ---
 
 Implementing simple multiclass logistic regression with Tensorflow.
