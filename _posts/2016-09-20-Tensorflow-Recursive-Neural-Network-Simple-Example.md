@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tensorflow Recursive Neural Network (ReNN) simple example
-categories: ['Tensorflow']
+categories: ['Tensorflow','DeepLearning']
 ---
 
 A simple example demonstrating the use of TensorArray to create a recursive neural network, essentially a tree structured neural network.
