@@ -19,18 +19,9 @@ pip.main(['install','pandas'])
     Requirement already satisfied: numpy>=1.9.0 in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages (from pandas)
     Requirement already satisfied: six>=1.5 in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages (from python-dateutil>=2->pandas)
     
-
     You are using pip version 9.0.1, however version 10.0.1 is available.
     You should consider upgrading via the 'python -m pip install --upgrade pip' command.
-    
-
-
-
-
-    0
-
-
-
+  
 Now lets use pandas to load the dataset from a url.
 
 
