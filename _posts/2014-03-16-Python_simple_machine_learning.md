@@ -1,4 +1,10 @@
 
+---
+layout: post
+title: Basic machine learning with python sklearn : classification
+categories: ['Machine Learning','Classification']
+tags: [blogging]
+---
 
 ```python
 #Lets start with installing pandas from within python interactive shell. This may be needed if you are missing a package.
