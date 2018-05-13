@@ -4,6 +4,7 @@ title: Basic machine learning with python sklearn for classification
 categories: ['Machine Learning','Classification']
 tags: [blogging]
 ---
+A demonstration of how to use python package sklearn for a basic machine learning task : classification.
 
 ### code
 ```python
