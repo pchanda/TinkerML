@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Basic machine learning with python sklearn : classification
