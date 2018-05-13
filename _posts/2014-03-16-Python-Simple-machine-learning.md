@@ -6,6 +6,7 @@ categories: ['Machine Learning','Classification']
 tags: [blogging]
 ---
 
+### code
 ```python
 #Lets start with installing pandas from within python interactive shell. This may be needed if you are missing a package.
 import pip
@@ -13,6 +14,7 @@ import pip
 pip.main(['install','pandas']) 
 ```
 
+### output
 ```python
     Requirement already satisfied: pandas in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages
     Requirement already satisfied: python-dateutil>=2 in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages (from pandas)
@@ -26,6 +28,7 @@ pip.main(['install','pandas'])
 Now lets use pandas to load the dataset from a url.
 ```
 
+### code
 ```python
 import pandas
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
@@ -33,6 +36,7 @@ dataset = pandas.read_csv(url)
 print('shape=',dataset.shape)
 print(dataset.head())
 ```
+### output
 ```python
     shape= (149, 5)
        5.1  3.5  1.4  0.2  Iris-setosa
@@ -45,11 +49,12 @@ print(dataset.head())
 
 Oh no, the dataset has no column names, lets add them
 
-
+### code
 ```python
 dataset.columns=['A','B','C','D','E']
 print(dataset.head())
 ```
+### output
 ```python
          A    B    C    D            E
     0  4.9  3.0  1.4  0.2  Iris-setosa
@@ -61,11 +66,11 @@ print(dataset.head())
 
 Lets look at the class distribution of the column we will use as target for our machine learning tasks, column 'E'.
 
-
+### code
 ```python
 print(dataset.groupby('E').size())
 ```
-
+### output
 ```python
     E
     Iris-setosa        49
@@ -76,13 +81,14 @@ print(dataset.groupby('E').size())
 
 Now lets split our dataset randomly into training, testing, and validation datasets. First, shuffle the dataset randomly with replacement.
 
-
+### code
 ```python
 # The frac keyword argument specifies the fraction of rows to return in
 # the random sample, so frac=1 means return all rows (in random order).
 dataset_shuffled = dataset.sample(frac=1)
 print(dataset_shuffled.head())
 ```
+### output
 ```python
            A    B    C    D                E
     9    5.4  3.7  1.5  0.2      Iris-setosa
@@ -95,7 +101,7 @@ print(dataset_shuffled.head())
 Now split the data into training and validation sets in 80:20 ratio. We will use the validation set to test the 
 performance of machine learning algorithms.
 
-
+### code
 ```python
 n = dataset_shuffled.shape[0]
 validation_size = int(0.2*n)
@@ -110,17 +116,18 @@ X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(
 
 Check the sizes of the training and validation data sets.
 
-
+### code
 ```python
 print('Train_X = ',X_train.shape, 'Train_Y = ',Y_train.shape)
 print('Val_X = ',X_validation.shape, 'Val_Y = ',Y_validation.shape)
 ```
+### output
 ```python
     Train_X =  (120, 4) Train_Y =  (120,)
     Val_X =  (29, 4) Val_Y =  (29,)
 ```    
 
-
+### code
 ```python
 import sklearn
 from sklearn import linear_model
@@ -144,6 +151,7 @@ for model in models_list:
     print(model_name,' : mean=',cv_results.mean(), ' sd=',cv_results.std())
     print('------------------------------------------------------------------------')
 ```
+### output
 ```python
     LogisticRegression  :  [1.0, 1.0, 1.0, 0.6666666666666666, 0.9333333333333333, 0.9333333333333333, 0.9333333333333333, 1.0]
     LogisticRegression  : mean= 0.9333333333333333  sd= 0.10540925533894599
@@ -161,7 +169,7 @@ for model in models_list:
 
 But this is naive training with each of the classifiers as we have not done anything to optimize the parameters for each classifer. We will use sklearn.model_selection.GridSearchCV for that. Lets do this with each classifier separately because each classifier will have its own set of parametes to tune. 
 
-
+### code
 ```python
 kfolds = model_selection.KFold(n_splits=num_folds,shuffle=True,random_state=13)
 
@@ -184,7 +192,7 @@ def do_grid_search(estimator,grid_values,kfolds):
     return clf
 ```
 
-
+### code
 ```python
 # First, logistic Regression parameters to tune : C, penalty
 grid_values = {'C':[0.01,0.1,1,10,100],'penalty':['l1','l2']}
@@ -198,6 +206,7 @@ clf_KNN = do_grid_search(KNN,grid_values,kfolds)
 grid_values = {'criterion':['gini','entropy'],'splitter':['best','random'],'min_samples_split':list(range(2,10)),'min_samples_leaf':[1,2,3,4,5]}
 clf_DT = do_grid_search(DT,grid_values,kfolds)
 ```
+### output
 ```python
     LogisticRegression
     0.233 (+/-0.149) for {'C': 0.01, 'penalty': 'l1'}
@@ -392,7 +401,7 @@ clf_DT = do_grid_search(DT,grid_values,kfolds)
     ----------------------------------------------
 ```    
 
-
+### code
 ```python
 # And finally SVM
 grid_values = {'C':[1,10,100],'kernel':['linear', 'poly', 'rbf', 'sigmoid'] }
@@ -417,7 +426,7 @@ clf_SVM = do_grid_search(SVM,grid_values,kfolds)
     ----------------------------------------------
 ```    
 
-
+### code
 ```python
 from sklearn.metrics import classification_report
 
@@ -425,6 +434,8 @@ from sklearn.metrics import classification_report
 Y_true, Y_pred = Y_validation, clf_LR.predict(X_validation)
 print(classification_report(Y_true, Y_pred))
 ```
+
+### output
 ```python
                      precision    recall  f1-score   support
     
@@ -453,7 +464,7 @@ print(classification_report(Y_true, Y_pred))
 ```    
     
 
-
+### code
 ```python
 # predictions for DT
 Y_true, Y_pred = Y_validation, clf_DT.predict(X_validation)
@@ -470,7 +481,7 @@ print(classification_report(Y_true, Y_pred))
 ```    
     
 
-
+### code
 ```python
 # predictions for SVM
 Y_true, Y_pred = Y_validation, clf_SVM.predict(X_validation)
@@ -486,4 +497,4 @@ print(classification_report(Y_true, Y_pred))
         avg / total       0.97      0.97      0.97        29
 ```    
     
-Download notebook file for code and data at https://github.com/pchanda/pchanda.github.io/blob/master/data/Python_simple_machine_learning_classification.ipynb
+Download notebook file for code and data at [Classification](https://github.com/pchanda/pchanda.github.io/blob/master/data/Python_simple_machine_learning_classification.ipynb)
