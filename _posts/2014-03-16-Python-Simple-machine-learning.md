@@ -13,6 +13,7 @@ import pip
 pip.main(['install','pandas']) 
 ```
 
+```python
     Requirement already satisfied: pandas in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages
     Requirement already satisfied: python-dateutil>=2 in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages (from pandas)
     Requirement already satisfied: pytz>=2011k in c:\users\u588401\appdata\local\continuum\anaconda3\lib\site-packages (from pandas)
@@ -23,7 +24,7 @@ pip.main(['install','pandas'])
     You should consider upgrading via the 'python -m pip install --upgrade pip' command.
   
 Now lets use pandas to load the dataset from a url.
-
+```
 
 ```python
 import pandas
@@ -32,7 +33,7 @@ dataset = pandas.read_csv(url)
 print('shape=',dataset.shape)
 print(dataset.head())
 ```
-
+```python
     shape= (149, 5)
        5.1  3.5  1.4  0.2  Iris-setosa
     0  4.9  3.0  1.4  0.2  Iris-setosa
@@ -40,7 +41,7 @@ print(dataset.head())
     2  4.6  3.1  1.5  0.2  Iris-setosa
     3  5.0  3.6  1.4  0.2  Iris-setosa
     4  5.4  3.9  1.7  0.4  Iris-setosa
-    
+```    
 
 Oh no, the dataset has no column names, lets add them
 
@@ -49,14 +50,14 @@ Oh no, the dataset has no column names, lets add them
 dataset.columns=['A','B','C','D','E']
 print(dataset.head())
 ```
-
+```python
          A    B    C    D            E
     0  4.9  3.0  1.4  0.2  Iris-setosa
     1  4.7  3.2  1.3  0.2  Iris-setosa
     2  4.6  3.1  1.5  0.2  Iris-setosa
     3  5.0  3.6  1.4  0.2  Iris-setosa
     4  5.4  3.9  1.7  0.4  Iris-setosa
-    
+```    
 
 Lets look at the class distribution of the column we will use as target for our machine learning tasks, column 'E'.
 
@@ -65,12 +66,13 @@ Lets look at the class distribution of the column we will use as target for our 
 print(dataset.groupby('E').size())
 ```
 
+```python
     E
     Iris-setosa        49
     Iris-versicolor    50
     Iris-virginica     50
     dtype: int64
-    
+```    
 
 Now lets split our dataset randomly into training, testing, and validation datasets. First, shuffle the dataset randomly with replacement.
 
@@ -81,14 +83,14 @@ Now lets split our dataset randomly into training, testing, and validation datas
 dataset_shuffled = dataset.sample(frac=1)
 print(dataset_shuffled.head())
 ```
-
+```python
            A    B    C    D                E
     9    5.4  3.7  1.5  0.2      Iris-setosa
     113  5.8  2.8  5.1  2.4   Iris-virginica
     96   6.2  2.9  4.3  1.3  Iris-versicolor
     118  6.0  2.2  5.0  1.5   Iris-virginica
     147  6.2  3.4  5.4  2.3   Iris-virginica
-    
+```    
 
 Now split the data into training and validation sets in 80:20 ratio. We will use the validation set to test the 
 performance of machine learning algorithms.
@@ -113,10 +115,10 @@ Check the sizes of the training and validation data sets.
 print('Train_X = ',X_train.shape, 'Train_Y = ',Y_train.shape)
 print('Val_X = ',X_validation.shape, 'Val_Y = ',Y_validation.shape)
 ```
-
+```python
     Train_X =  (120, 4) Train_Y =  (120,)
     Val_X =  (29, 4) Val_Y =  (29,)
-    
+```    
 
 
 ```python
@@ -142,7 +144,7 @@ for model in models_list:
     print(model_name,' : mean=',cv_results.mean(), ' sd=',cv_results.std())
     print('------------------------------------------------------------------------')
 ```
-
+```python
     LogisticRegression  :  [1.0, 1.0, 1.0, 0.6666666666666666, 0.9333333333333333, 0.9333333333333333, 0.9333333333333333, 1.0]
     LogisticRegression  : mean= 0.9333333333333333  sd= 0.10540925533894599
     ------------------------------------------------------------------------
@@ -155,7 +157,7 @@ for model in models_list:
     SVC  :  [0.9333333333333333, 1.0, 0.9333333333333333, 0.9333333333333333, 1.0, 0.9333333333333333, 1.0, 1.0]
     SVC  : mean= 0.9666666666666667  sd= 0.033333333333333326
     ------------------------------------------------------------------------
-    
+```    
 
 But this is naive training with each of the classifiers as we have not done anything to optimize the parameters for each classifer. We will use sklearn.model_selection.GridSearchCV for that. Lets do this with each classifier separately because each classifier will have its own set of parametes to tune. 
 
@@ -196,7 +198,7 @@ clf_KNN = do_grid_search(KNN,grid_values,kfolds)
 grid_values = {'criterion':['gini','entropy'],'splitter':['best','random'],'min_samples_split':list(range(2,10)),'min_samples_leaf':[1,2,3,4,5]}
 clf_DT = do_grid_search(DT,grid_values,kfolds)
 ```
-
+```python
     LogisticRegression
     0.233 (+/-0.149) for {'C': 0.01, 'penalty': 'l1'}
     0.675 (+/-0.356) for {'C': 0.01, 'penalty': 'l2'}
@@ -388,7 +390,7 @@ clf_DT = do_grid_search(DT,grid_values,kfolds)
     best_parameters= {'criterion': 'gini', 'min_samples_leaf': 1, 'min_samples_split': 4, 'splitter': 'random'}
     best_accuracy= 0.975
     ----------------------------------------------
-    
+```    
 
 
 ```python
@@ -396,7 +398,7 @@ clf_DT = do_grid_search(DT,grid_values,kfolds)
 grid_values = {'C':[1,10,100],'kernel':['linear', 'poly', 'rbf', 'sigmoid'] }
 clf_SVM = do_grid_search(SVM,grid_values,kfolds)
 ```
-
+```python
     SVC
     0.975 (+/-0.065) for {'C': 1, 'kernel': 'linear'}
     0.958 (+/-0.093) for {'C': 1, 'kernel': 'poly'}
@@ -413,7 +415,7 @@ clf_SVM = do_grid_search(SVM,grid_values,kfolds)
     best_parameters= {'C': 1, 'kernel': 'linear'}
     best_accuracy= 0.975
     ----------------------------------------------
-    
+```    
 
 
 ```python
@@ -423,7 +425,7 @@ from sklearn.metrics import classification_report
 Y_true, Y_pred = Y_validation, clf_LR.predict(X_validation)
 print(classification_report(Y_true, Y_pred))
 ```
-
+```python
                      precision    recall  f1-score   support
     
         Iris-setosa       1.00      1.00      1.00        10
@@ -431,7 +433,7 @@ print(classification_report(Y_true, Y_pred))
      Iris-virginica       1.00      1.00      1.00        10
     
         avg / total       1.00      1.00      1.00        29
-    
+```    
     
 
 
@@ -440,7 +442,7 @@ print(classification_report(Y_true, Y_pred))
 Y_true, Y_pred = Y_validation, clf_KNN.predict(X_validation)
 print(classification_report(Y_true, Y_pred))
 ```
-
+```python
                      precision    recall  f1-score   support
     
         Iris-setosa       1.00      1.00      1.00        10
@@ -448,7 +450,7 @@ print(classification_report(Y_true, Y_pred))
      Iris-virginica       1.00      0.90      0.95        10
     
         avg / total       0.97      0.97      0.97        29
-    
+```    
     
 
 
@@ -457,7 +459,7 @@ print(classification_report(Y_true, Y_pred))
 Y_true, Y_pred = Y_validation, clf_DT.predict(X_validation)
 print(classification_report(Y_true, Y_pred))
 ```
-
+```python
                      precision    recall  f1-score   support
     
         Iris-setosa       1.00      1.00      1.00        10
@@ -465,7 +467,7 @@ print(classification_report(Y_true, Y_pred))
      Iris-virginica       1.00      0.80      0.89        10
     
         avg / total       0.94      0.93      0.93        29
-    
+```    
     
 
 
@@ -474,7 +476,7 @@ print(classification_report(Y_true, Y_pred))
 Y_true, Y_pred = Y_validation, clf_SVM.predict(X_validation)
 print(classification_report(Y_true, Y_pred))
 ```
-
+```python
                      precision    recall  f1-score   support
     
         Iris-setosa       1.00      1.00      1.00        10
@@ -482,5 +484,5 @@ print(classification_report(Y_true, Y_pred))
      Iris-virginica       1.00      0.90      0.95        10
     
         avg / total       0.97      0.97      0.97        29
-    
+```    
     
