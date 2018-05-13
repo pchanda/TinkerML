@@ -486,3 +486,4 @@ print(classification_report(Y_true, Y_pred))
         avg / total       0.97      0.97      0.97        29
 ```    
     
+Download notebook file for code and data at https://github.com/pchanda/pchanda.github.io/blob/master/data/Python_simple_machine_learning_classification.ipynb
