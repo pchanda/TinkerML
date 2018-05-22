@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Simple feed_dict with Deepchem framework in tensorflow style 
+title: Simple data feeding to Deepchem framework in tensorflow style 
 categories: ['Computational Chemistry','DeepLearning','Tensorflow']
 ---
 
