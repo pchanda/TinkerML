@@ -151,4 +151,74 @@ Starting epoch 9
 Epoch avg loss =  29.737802505493164
 ```
 
-Lets explore the same strategy for a more complicated model : 
+Lets explore the same strategy for more complicated Graph Convolutions. We need to use the ConvMolFeaturizer: 
+
+```python
+def read_data(fname):
+   dataset_file = os.path.join('./data/', fname)
+   featurizer = dc.feat.ConvMolFeaturizer()
+   loader = dc.data.CSVLoader(tasks=tox21_tasks, smiles_field="Smiles", featurizer=featurizer)
+   dataset = loader.featurize(dataset_file, shard_size=8192)
+   transformer = dc.trans.BalancingTransformer(transform_w=True, dataset=dataset)
+   transformed_dataset = transformer.transform(dataset)
+   return transformed_dataset
+```  
+
+And re-define our predictive model, other parts remain unchanged:
+
+``` python
+# placeholder for a feature vector of length 75 for each atom
+atom_features = Feature(shape=(None, 75))
+# an indexing convenience that makes it easy to locate atoms from all molecules with a given degree
+degree_slice = Feature(shape=(None, 2), dtype=tf.int32)
+# placeholder that determines the membership of atoms in molecules (atom i belongs to molecule membership[i])
+membership = Feature(shape=(None,), dtype=tf.int32)
+# list that contains adjacency lists grouped by atom degree
+deg_adjs = []
+for i in range(0, 10 + 1):
+   deg_adj = Feature(shape=(None, i + 1), dtype=tf.int32) # placeholder for adj list of all nodes with i neighbors
+   deg_adjs.append(deg_adj)
+
+gc1 = GraphConv(64, activation_fn=tf.nn.relu, in_layers=[atom_features, degree_slice, membership]+deg_adjs )
+batch_norm1 = BatchNorm(in_layers=[gc1])
+gp1 = GraphPool(in_layers=[batch_norm1, degree_slice, membership] + deg_adjs)
+
+dense = Dense(out_channels=512, activation_fn=tf.nn.relu, in_layers=[gp1])
+batch_norm2 = BatchNorm(in_layers=[dense])
+readout = GraphGather( batch_size=batch_size, activation_fn=tf.nn.tanh, in_layers=[batch_norm2, degree_slice, membership] + deg_adjs)
+
+classification = Dense( out_channels=2, activation_fn=None, in_layers=[readout],name="Dense")
+softmax = SoftMax(in_layers=[classification],name="Softmax")
+tg.add_output(softmax)
+label = Label(shape=(None, 2))
+cost = SoftMaxCrossEntropy(in_layers=[label, classification],name="SoftMaxCrossEntropy")
+
+weights = Weights(shape=(None, len(tox21_tasks)))
+loss = WeightedError(in_layers=[cost, weights])
+tg.set_loss(loss)
+```
+
+Training this gives:
+
+```python
+Starting epoch 0
+Epoch avg loss =  36.449554443359375
+Starting epoch 1
+Epoch avg loss =  37.274847666422524
+Starting epoch 2
+Epoch avg loss =  24.871442794799805
+Starting epoch 3
+Epoch avg loss =  26.757398923238117
+Starting epoch 4
+Epoch avg loss =  21.097051938374836
+Starting epoch 5
+Epoch avg loss =  18.842341423034668
+Starting epoch 6
+Epoch avg loss =  18.118828455607098
+Starting epoch 7
+Epoch avg loss =  15.58962615331014
+Starting epoch 8
+Epoch avg loss =  14.505534172058105
+Starting epoch 9
+Epoch avg loss =  13.777753194173178
+```
