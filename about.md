@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Machine learning and data scientist at DowDupont.  
+Machine learning and data scientist at Corteva Agrisciences, agricultural division of DowDupont.  
 
 ### More Information
 
