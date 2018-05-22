@@ -1,8 +1,14 @@
+---
+layout: post
+title: Simple feed_dict with Deepchem framework in tensorflow style 
+categories: ['Computational Chemistry','DeepLearning','Tensorflow']
+---
 
 Deepchem provides a wonderful framework and library for developing deep learning and machine learning predictive models for small molecules. However, its understandably complex pythonic architecure and equally inexplicable lack of documentation (except  the raw python function descriptions and a handful of tutorials) make it very hard to get benath the surface and engineer it to fit your own needs, particularly so if you are not a physics, chemisty and deep learning and programming major. Here I will chronicle my efforts to just enable training with deepchem where we will be feeding the data using feed_dict (people who uses tensorflow will understand this term) to the tensorflow graph, not using the standard fit_generator or fit functions of deepchem (which kind of makes deepchem a blackbox, I hate blackboxes that I do not understand). 
 
 The data is just small molecule smiles and a binary property which we will learn to predict with deepchem using just the molecule smiles. The data in a csv file (Tr.csv) looks like:
 
+```python
 Smiles,Activity
 S(C(C)C)c1c(/C=N/OC(=O)C)n2c(SC=C2)n1,1
 O=C(OC)CCC(=O)N(C)c1nnc(-c2cnccc2)cc1,0
@@ -19,7 +25,7 @@ Clc1c(O)c(/C=N/NC(=O)c2ccc(C(C)(C)C)cc2)cc(Cl)c1,0
 FC(F)(F)c1ccc(N2C(=O)OC=N2)cc1,0
 Fc1ccc(N2CCN(Cc3nc4n(C(=O)N(CC5CC5)CC4)c3)CC2)cc1,0
 Clc1ccc(-c2nc(-c3occc3)on2)cc1,1
-
+```
 
 The code starts with standard imports:
 
@@ -122,6 +128,7 @@ with tg._get_tf("Graph").as_default():
 
 Running this gives:
 
+```python
 Starting epoch 0
 Epoch avg loss =  32.24176534016927
 Starting epoch 1
@@ -142,6 +149,6 @@ Starting epoch 8
 Epoch avg loss =  29.97362518310547
 Starting epoch 9
 Epoch avg loss =  29.737802505493164
-
+```
 
 Lets explore the same strategy for a more complicated model : 
