@@ -112,7 +112,7 @@ Hb = tf.Variable(tf.random_normal([e_dim], stddev=std_dev),name="Hb")
 
 u_k = input_q #initialize u_k for first hop in memory, shape : batch_size x edim
 
-for k in range(n_hops): #k indexes the no. of hops in memory
+for k in range(n_hops): #k indexes the hops in memory
     print('hop in memory :',k,' input u_k:',u_k)
     u_k_3d = tf.reshape(u_k, [-1, e_dim, 1]) # reshape to shape: batch_size x e_dim x 1
     
