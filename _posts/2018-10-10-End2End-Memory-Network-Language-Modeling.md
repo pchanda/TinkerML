@@ -6,7 +6,7 @@ categories: ['Tensorflow','DeepLearning','NLP','Memory Networks']
 
 Tensorflow implementation of [End-To-End Memory Networks](https://arxiv.org/abs/1503.08895v4) for the language modeling task. 
 I tried to name the variable as closely as possible to that in the paper following the equations to help understand the paper. Don't forget to change the "input_file" to your input file.
-Some of the ideas are borrowed from earlier [implementation](https://github.com/carpedm20/MemN2N-tensorflow). 
+Some of the ideas are borrowed from earlier [implementation](https://github.com/carpedm20/MemN2N-tensorflow). The python notebook of the code can be found [here](https://github.com/pchanda/pchanda.github.io/blob/master/data/Mem-eNd-2-eNd.ipynb)
 
 ## Model parameters and input configurations
 
