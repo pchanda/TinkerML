@@ -224,4 +224,4 @@ with tf.Session() as sess:
 
 ```
 
-Happy training :)
+Happy training :). Please drop a line if you found the code easy to understand.
