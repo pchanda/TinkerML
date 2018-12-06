@@ -76,7 +76,7 @@ n_words = config['n_words'] = len(word2idx)
 current_lr = config['init_lr']
 std_dev = config['std_dev']
 init_q = config['init_q']
-max_grad_norm = config['max_grad_norm']```
+max_grad_norm = config['max_grad_norm']
 ```
 ## Define the tensorflow model. 
 The comments should explain the code.
@@ -217,8 +217,10 @@ def train_one_epoch(epoch_no,sess,data):
          
 # Define session to run the model with data            
 with tf.Session() as sess:
-    tf.global_variables_initializer().run()    
-    train_one_epoch(1,sess,train_data)
-    
+    tf.global_variables_initializer().run()
+    for epoch_no in range(n_epochs):
+        print('Running epoch = ',epoch_no)
+        train_one_epoch(epoch_no,sess,train_data)
+
 ```
 
