@@ -157,7 +157,7 @@ Lets explore the same strategy for more complicated Graph Convolutions. We need 
 def read_data(fname):
    dataset_file = os.path.join('./data/', fname)
    featurizer = dc.feat.ConvMolFeaturizer()
-   loader = dc.data.CSVLoader(tasks=tox21_tasks, smiles_field="Smiles", featurizer=featurizer)
+   loader = dc.data.CSVLoader(tasks=training_task, smiles_field="Smiles", featurizer=featurizer)
    dataset = loader.featurize(dataset_file, shard_size=8192)
    transformer = dc.trans.BalancingTransformer(transform_w=True, dataset=dataset)
    transformed_dataset = transformer.transform(dataset)
@@ -193,7 +193,7 @@ tg.add_output(softmax)
 label = Label(shape=(None, 2))
 cost = SoftMaxCrossEntropy(in_layers=[label, classification],name="SoftMaxCrossEntropy")
 
-weights = Weights(shape=(None, len(tox21_tasks)))
+weights = Weights(shape=(None, len(training_task)))
 loss = WeightedError(in_layers=[cost, weights])
 tg.set_loss(loss)
 ```
