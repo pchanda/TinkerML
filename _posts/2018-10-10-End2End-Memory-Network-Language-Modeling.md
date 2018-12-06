@@ -36,7 +36,7 @@ config = {
         'max_grad_norm' : 50     #clip gradients to this norm.
 }
 
-# read words and convert it to unique integers
+# read words and convert it to unique integers (from https://github.com/carpedm20/MemN2N-tensorflow/)
 def read_data(fname, count, word2idx):
     with open(fname) as f:
         lines = f.readlines()
