@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Implementation of End-2-End Memory Network for Language Modeling
-categories: ['Tensorflow','DeepLearning','Natural Language Processing']
+categories: ['Tensorflow','DeepLearning','NLP']
 ---
 
 Tensorflow implementation of [End-To-End Memory Networks](https://arxiv.org/abs/1503.08895v4) for the language modeling task. 
