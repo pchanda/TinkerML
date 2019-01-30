@@ -4,7 +4,7 @@ title: Encoding a set of Graphs using Neural Message Passing
 categories: ['Pytorch','DeepLearning','Graphs','Message Passing Networks']
 ---
 
-You will need a gpu and cuda.
+You will need a gpu and cuda. Data[https://github.com/pchanda/pchanda.github.io/tree/master/data/data_graph_encoding]
 
 ## Model parameters and input configurations
 
