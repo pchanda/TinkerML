@@ -4,7 +4,7 @@ title: Encoding a set of Graphs using Neural Message Passing
 categories: ['Pytorch','DeepLearning','Graphs','Message Passing Networks']
 ---
 
-You will need a gpu and cuda. Data[https://github.com/pchanda/pchanda.github.io/tree/master/data/data_graph_encoding]
+You will need a gpu and cuda. [Data used in the code](https://github.com/pchanda/pchanda.github.io/tree/master/data/data_graph_encoding/)
 
 ## Model parameters and input configurations
 
@@ -270,7 +270,7 @@ class Graph_Encoder(nn.Module):
         return graph_vecs
 ```
 
-## Create Graph Encoder model and encode a simple batch of graphs.
+## Create Graph Encoder model and encode a simple batch of graphs. 
 
 ```python
 hidden_size = 64
@@ -288,3 +288,5 @@ GRAPHS = process_all_graphs(batch, NODE_FDIM,EDGE_FDIM)
 graph_vec = model_graph_encoder(GRAPHS)
 print('Got encoded graph_vec = \n',graph_vec.data.shape,'\n',graph_vec.data)
 ```
+## Add loss, optimizers and code to train the above model
+TBD
