@@ -228,7 +228,8 @@ class Graph_Encoder(nn.Module):
         super(Graph_Encoder, self).__init__()
         self.hidden_size = hidden_size
         self.depth = depth
-
+      
+        #Trainable parameters for the encoding network.
         self.W_i = nn.Linear(NODE_FDIM + EDGE_FDIM, hidden_size, bias=False)
         self.W_h = nn.Linear(hidden_size, hidden_size, bias=False)
         self.W_o = nn.Linear(NODE_FDIM + hidden_size, hidden_size)
@@ -269,7 +270,7 @@ class Graph_Encoder(nn.Module):
         return graph_vecs
 ```
 
-## Create Grap Encoder model and encode a simple batch of graphs.
+## Create Graph Encoder model and encode a simple batch of graphs.
 
 ```python
 hidden_size = 64
