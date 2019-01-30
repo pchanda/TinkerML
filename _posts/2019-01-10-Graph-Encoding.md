@@ -6,6 +6,8 @@ categories: ['Pytorch','DeepLearning','Graphs','Message Passing Networks']
 
 You will need gpu and cuda with pytorch. [Data used in the code](https://github.com/pchanda/pchanda.github.io/tree/master/data/data_graph_encoding/)
 
+Find the correspoding python notebook [here](https://github.com/pchanda/pchanda.github.io/blob/master/data/data_graph_encoding/Graph_encoding.ipynb)
+
 ## Model parameters and input configurations
 
 ```python
