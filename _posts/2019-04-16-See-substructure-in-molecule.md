@@ -52,17 +52,23 @@ monomer_mol = get_mol(monomer_smi) #substructure molecule
 matches = find_matches_one(peptide_mol,monomer_mol)
 
 atomset = list(matches[0])
-print(atomset)
+#print(atomset)
 ```
 ## Visuzlize the molecule with the substructure atoms in dark green.
+
+![png](output_0_1.png)
 
 ```python
 img = get_image(peptide_mol,atomset)
 img #see the whole molecule with the substructure highlighted.
 ```
+
+
 ## Visualize the substructure molecule alone.
 
 ```python
 img = get_image(monomer_mol)
 img #see the whole molecule with the substructure highlighted.
 ```
+
+![png](output_1_0.png)
