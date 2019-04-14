@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Visualize a given substructure in a given molecule using rdkit 
+title: Visualize a given substructure in a given molecule using rdkit and python. 
 categories: ['rdkit']
 ---
 Given the smiles of a molecule and the smiles of a possible substructure, find the atoms of the substructure in the molecule.
