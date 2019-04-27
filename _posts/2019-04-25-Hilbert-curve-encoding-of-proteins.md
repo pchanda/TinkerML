@@ -211,5 +211,6 @@ Final image shape:
 (32, 32, 20)
 ```
 
+## Full notebook
 
-![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_0_1.png)
+![Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Encode_protein_hilbert_curve.ipynb)
