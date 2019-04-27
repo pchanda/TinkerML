@@ -213,4 +213,5 @@ Final image shape:
 
 ## Full notebook
 
-![Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Encode_protein_hilbert_curve.ipynb)
+[Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Encode_protein_hilbert_curve.ipynb)
+
