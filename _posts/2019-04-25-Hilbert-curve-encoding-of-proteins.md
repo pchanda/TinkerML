@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Encode a protein to a image using Hilbert curves. 
-categories: ['Deep Learning']
+categories: ['DeepLearning','Computational Biology']
 ---
 
 ```python
