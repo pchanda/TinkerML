@@ -4,6 +4,11 @@ title: Simple character level LSTM using Pytorch.
 categories: ['DeepLearning']
 ---
 
+Implements simple character level name classification using Pytorch. Training is done using about 20K names across 18 languages. The names are clubbed into three categories : English, Russian, Other for simplicity. Using SGD as optimizer produces poor results, Adam performs better, Nadam even better.
+
+Be careful of initializating the LSTM properly when using pytorch, unlike Keras, a proper initialization of the LSTM parameters is not automatically done for you.
+
+
 ```python
 from __future__ import unicode_literals, print_function, division
 from io import open
