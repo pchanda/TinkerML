@@ -1,4 +1,8 @@
-
+---
+layout: post
+title: Simple character level LSTM using Keras. 
+categories: ['DeepLearning']
+---
 
 ```python
 from keras.models import Model, Input
