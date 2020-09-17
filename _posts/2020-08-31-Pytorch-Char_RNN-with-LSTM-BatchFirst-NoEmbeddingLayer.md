@@ -1,4 +1,8 @@
-
+---
+layout: post
+title: Simple character level LSTM using Pytorch. 
+categories: ['DeepLearning']
+---
 
 ```python
 from __future__ import unicode_literals, print_function, division
