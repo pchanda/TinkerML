@@ -33,8 +33,9 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 ```
 
+```python
     cuda:0
-
+```
 
 
 ```python
@@ -42,8 +43,9 @@ random.seed(30)
 print(torch.__version__)
 ```
 
+```python
     1.0.0a0
-
+```
 
 
 ```python
@@ -92,18 +94,20 @@ n_categories = len(all_categories)
 print('Total ',num_samples,'names across',n_categories,'categories')
 ```
 
+```python
     all training files= ['data/names/Vietnamese.txt', 'data/names/Czech.txt', 'data/names/Spanish.txt', 'data/names/Arabic.txt', 'data/names/Irish.txt', 'data/names/Scottish.txt', 'data/names/Dutch.txt', 'data/names/French.txt', 'data/names/Italian.txt', 'data/names/Greek.txt', 'data/names/Korean.txt', 'data/names/Japanese.txt', 'data/names/Polish.txt', 'data/names/Chinese.txt', 'data/names/German.txt', 'data/names/Russian.txt', 'data/names/Portuguese.txt', 'data/names/English.txt']
     Slusarski
     Total  20074 names across 18 categories
-
+```
 
 
 ```python
 print('No of characters, this is the encoding dimension of each character in a name : ',n_chars)
 ```
 
+```python
     No of characters, this is the encoding dimension of each character in a name :  58
-
+```
 
 
 ```python
@@ -112,11 +116,12 @@ print('category "English" has ',len(category_names_dict['English']),'names')
 print(category_names_dict['English'][:5])
 ```
 
+```python
     all_categories= ['Vietnamese', 'Czech', 'Spanish', 'Arabic', 'Irish', 'Scottish', 'Dutch', 'French', 'Italian', 'Greek', 'Korean', 'Japanese', 'Polish', 'Chinese', 'German', 'Russian', 'Portuguese', 'English'] 
     
     category "English" has  3668 names
     ['Abbas', 'Abbey', 'Abbott', 'Abdi', 'Abel']
-
+```
 
 
 ```python
@@ -135,7 +140,7 @@ for i,ll in enumerate(labels):
 
 ![png](output_7_0.png)
 
-
+```python
     Vietnamese 73
     Czech 519
     Spanish 298
@@ -154,7 +159,7 @@ for i,ll in enumerate(labels):
     Russian 9408
     Portuguese 74
     English 3668
-
+```
 
 
 ```python
@@ -191,6 +196,7 @@ all_categories = list(category_names_dict.keys())
 n_categories = len(all_categories)
 ```
 
+```python
     [Vietnamese]
     Vietnamese
     True
@@ -296,26 +302,26 @@ n_categories = len(all_categories)
     [Other]
     skip
     ------------------
-
+```
 
 
 ![png](output_8_1.png)
 
-
+```python
     Russian 9408
     English 3668
     Other 6998
-
+```
 
 
 ```python
 print(all_categories)
 print(n_categories)
 ```
-
+```python
     ['Russian', 'English', 'Other']
     3
-
+```
 
 
 ```python
@@ -356,13 +362,14 @@ print('Jones=',seqToTensor_one_hot('Jones').size())
 print(pad_char,charToTensor_one_hot(pad_char))
 ```
 
+```python
     J= torch.Size([1, 58])
     Jones= torch.Size([5, 1, 58])
     # tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
              0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
              0., 0., 0., 1.]])
-
+```
 
 ## Batch data generator, batch is the first dimension
 
@@ -548,8 +555,9 @@ batch_generator = batch_data_generator(all_categories, category_names_dict, batc
 print('Number of name categories, this is the no. of output categories = ',n_categories)
 ```
 
+```python
     Number of name categories, this is the no. of output categories =  3
-
+```
 
 
 ```python
@@ -616,6 +624,7 @@ for op in output:
     print(guess,guess_i)
 ```
 
+```python
     Batch contents:
     category: Russian , name: Tzarenko
     category: Other , name: Thach
@@ -703,7 +712,7 @@ for op in output:
     /opt/conda/lib/python3.6/site-packages/ipykernel_launcher.py:18: UserWarning: nn.init.xavier_normal is now deprecated in favor of nn.init.xavier_normal_.
     /opt/conda/lib/python3.6/site-packages/ipykernel_launcher.py:16: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
       app.launch_new_instance()
-
+```
 
 ### Define the training parameters
 
@@ -810,6 +819,9 @@ for iter in range(1, n_iters + 1):
     curr_epoch = epoch_num
 ```
 
+### Training output
+
+```python
     batch_data_generator: num_samples = 20074 num_batches =  2007
     epoch= 0
     2008 1% (0m 21s) 0.1042 Ibarra / Other ✓
@@ -2279,7 +2291,7 @@ for iter in range(1, n_iters + 1):
     200000 100% (37m 52s) 0.0751 Esmansky / Russian ✓
     ---------------------------------------------------------------------------------
     current_loss= 0.06435139737010001
-
+```
 
 ### Plot the average loss for epochs
 
@@ -2318,7 +2330,9 @@ for p_iter in range(10):
 
 print('\nAcc = %f'%(acc/tot))
 ```
+### Output
 
+```python
     Winward English ✓
     V'Yunkov Russian ✓
     Boutros Other ✓
@@ -2421,4 +2435,4 @@ print('\nAcc = %f'%(acc/tot))
     Plastow English ✓
     
     Acc = 0.930000
-
+```
