@@ -1,4 +1,10 @@
+---
+layout: post
+title: Buidling multilayer GPU from single GRU-cells with Pytorch. 
+categories: ['DeepLearning']
+---
 
+First use nn.GRU with 3 layers for processing sequences. Then use nn.GRUCell for doing the same. 
 
 ```python
 from __future__ import unicode_literals, print_function, division
