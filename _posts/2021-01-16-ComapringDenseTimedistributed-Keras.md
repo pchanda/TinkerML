@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Keras-Comaparing using TimeDistributed and not with dense when return_sequences=True. Results are identical. 
+title: Comaparing using TimeDistributed and not with dense when return_sequences=True in Keras. The results are identical. 
 categories: ['DeepLearning']
 ---
 
