@@ -56,7 +56,12 @@ atomset = list(matches[0])
 ```
 ## Visuzlize the molecule with the substructure atoms in dark green.
 
-![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_0_1.png)
+<!--![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_0_1.png) -->
+
+**Molecule**          |  
+:-------------------------:|
+![an image alt text]({{ site.baseurl }}/images/output_0_1.png "Molecule"){:height="35%" width="60%"} | 
+
 
 ```python
 img = get_image(peptide_mol,atomset)
