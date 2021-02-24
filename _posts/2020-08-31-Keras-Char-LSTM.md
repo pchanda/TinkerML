@@ -138,8 +138,8 @@ for i,ll in enumerate(labels):
     print(ll,values[i])
 ```
 
-
-![png](output_8_0.png)
+![an image alt text]({{ site.baseurl }}/images/output_8_0.png "xxx"){:height="100%" width="100%"} |
+<!-- ![png](output_8_0.png) -->
 
 
     Vietnamese 73
@@ -304,8 +304,8 @@ n_categories = len(all_categories)
     ------------------
 
 
-
-![png](output_9_1.png)
+![an image alt text]({{ site.baseurl }}/images/output_9_1.png "xxx"){:height="100%" width="100%"} |
+<!-- ![png](output_9_1.png) -->
 
 
     Russian 9408
