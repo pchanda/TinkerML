@@ -58,8 +58,8 @@ atomset = list(matches[0])
 
 <!--![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_0_1.png) -->
 
-**Molecule with substructure(green)**   |  
-:-----------------------------------:|
+**Molecule with substructure(green)**    
+|:-----------------------------------:|
 ![an image alt text]({{ site.baseurl }}/images/output_0_1.png "Molecule with substructure"){:height="100%" width="100%"} | 
 
 
@@ -77,5 +77,6 @@ img #see the whole molecule with the substructure highlighted.
 ```
 
 <!-- ![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_1_0.png) -->
-**Substructure**          
+**Substructure**      
+|:-----------------------------------:|
 ![an image alt text]({{ site.baseurl }}/images/output_1_0.png "Substructure"){:height="40%" width="40%"} | 
