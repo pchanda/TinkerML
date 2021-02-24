@@ -54,7 +54,7 @@ matches = find_matches_one(peptide_mol,monomer_mol)
 atomset = list(matches[0])
 #print(atomset)
 ```
-## Visuzlize the molecule with the substructure atoms in dark green.
+## Visualize the molecule with the substructure atoms in dark green.
 
 <!--![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_0_1.png) -->
 
