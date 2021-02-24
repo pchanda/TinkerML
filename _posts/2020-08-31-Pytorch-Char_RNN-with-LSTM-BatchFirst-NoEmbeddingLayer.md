@@ -137,7 +137,7 @@ for i,ll in enumerate(labels):
     print(ll,values[i])
 ```
 
-![an image alt text]({{ site.baseurl }}/images/output_7_0.png "xxx"){:height="100%" width="100%"} | 
+![an image alt text]({{ site.baseurl }}/images/output_7_0.png "xxx"){:height="50%" width="50%"} | 
 <!-- ![png](output_7_0.png) -->
 
 ```python
@@ -304,7 +304,7 @@ n_categories = len(all_categories)
     ------------------
 ```
 
-![an image alt text]({{ site.baseurl }}/images/output_8_1.png "xxx"){:height="50%" width="50%"} | 
+![an image alt text]({{ site.baseurl }}/images/output_8_1.png "xxx"){:height="100%" width="100%"} | 
 
 <!--![png](output_8_1.png)-->
 
