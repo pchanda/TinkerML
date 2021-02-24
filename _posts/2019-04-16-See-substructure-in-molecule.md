@@ -60,7 +60,7 @@ atomset = list(matches[0])
 
 **Molecule**          |  
 :-------------------------:|
-![an image alt text]({{ site.baseurl }}/images/output_0_1.png "Molecule"){:height="35%" width="60%"} | 
+![an image alt text]({{ site.baseurl }}/images/output_0_1.png "Molecule with substructure"){:height="100%" width="100%"} | 
 
 
 ```python
@@ -76,4 +76,5 @@ img = get_image(monomer_mol)
 img #see the whole molecule with the substructure highlighted.
 ```
 
-![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_1_0.png)
+<!-- ![png](https://github.com/pchanda/pchanda.github.io/tree/master/_posts/output_1_0.png) -->
+![an image alt text]({{ site.baseurl }}/images/output_1_0.png "Substructure"){:height="100%" width="100%"} | 
