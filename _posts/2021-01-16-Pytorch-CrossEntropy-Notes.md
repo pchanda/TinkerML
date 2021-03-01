@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How is cross entropy computed in pytorch ? 
-categories: ['DeepLearning','pytorch']
+categories: ['DeepLearning','Pytorch']
 ---
 
 CROSS ENTROPY LOSS (logits, class) = negative log of softmax of logits[class]
@@ -58,7 +58,7 @@ print('CE loss=',-np.log(torch.squeeze(probabilities)[target_class]))
 
 
 
-![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy1.jpg "xxx"){:height="25%" width="80%"} |
+![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy_1.jpg "xxx"){:height="40%" width="40%"} |
 
 
 ### Cross entropy with 4 outputs and a target class. Each output is a 2D tensor.
@@ -99,6 +99,8 @@ print('\nloss=',loss)
 logits tensor has shape `batch_size` x `num_outputs` x `2`. Here batch_size=1, num_outputs=4. 
 The loss tensor will have dimensionality of 2 - one loss for each of the 2 dimensions of the output (as we have reduction=`none`)
 
+
+```python
 ce_loss = nn.CrossEntropyLoss(reduction='none')
 
 logits = torch.from_numpy(np.array([[[4,10], [3,2], [2,3], [10,4]]])).float()
@@ -110,8 +112,24 @@ print('\nTarget',target_classes.shape,'\n',target_classes)
 
 loss = ce_loss(logits, target_classes)
 print('\nloss=',loss)
+```
 
-![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy2.jpg "xxx"){:height="30%" width="80%"} |
+    Logits torch.Size([1, 4, 2])
+     tensor([[[ 4., 10.],
+             [ 3.,  2.],
+             [ 2.,  3.],
+             [10.,  4.]]])
+
+    Target torch.Size([1, 2])
+     tensor([[3, 1]])
+
+    loss= tensor([[3.7192e-03, 8.0037e+00]])
+
+
+
+![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy_2.jpg "xxx"){:height="40%" width="40%"} |
+
+
 
 ### Cross entropy with 4 outputs and a target class (batch_size=2). Each output is a 2D tensor.
 
