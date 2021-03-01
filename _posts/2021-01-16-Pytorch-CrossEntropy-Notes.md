@@ -58,7 +58,7 @@ print('CE loss=',-np.log(torch.squeeze(probabilities)[target_class]))
 
 
 
-![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy1.jpg "xxx"){:height="50%" width="50%"} |
+![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy1.jpg "xxx"){:height="20%" width="80%"} |
 
 
 ### Cross entropy with 4 outputs and a target class. Each output is a 2D tensor.
@@ -111,7 +111,7 @@ print('\nTarget',target_classes.shape,'\n',target_classes)
 loss = ce_loss(logits, target_classes)
 print('\nloss=',loss)
 
-![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy2.jpg "xxx"){:height="50%" width="50%"} |
+![an image alt text]({{ site.baseurl }}/images/pytorch_crossentropy2.jpg "xxx"){:height="20%" width="80%"} |
 
 ### Cross entropy with 4 outputs and a target class (batch_size=2). Each output is a 2D tensor.
 
