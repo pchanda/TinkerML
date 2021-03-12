@@ -15,7 +15,7 @@ import time
 
 ## Preparing the dataset for Machine Translation
 
-
+[Data Preprocessing Notebook] https://github.com/pchanda/pchanda.github.io/blob/master/data/ProcessData.ipynb 
 ```python
 from ProcessData import *
 ```
@@ -549,3 +549,5 @@ for eng_sent, fr_sent in zip(english_batch,french_batch):
     Predicted translation: english:i'm home . => french:je suis chez moi <unk> .
     -------------------------------------------------------------------
 
+### Link to python notebook
+[Simple Seq2Seq Notebook] https://github.com/pchanda/pchanda.github.io/blob/master/data/Seq2Seq_Simple.ipynb
