@@ -4,9 +4,7 @@ title: Simple Seq2Seq machine translation using GRU based encoder-decoder archit
 categories: ['DeepLearning','Pytorch','NLP']
 ---
 
-
-# Simple Seq2Seq machine translation using GRU based encoder-decoder architecture 
-
+Adapted from https://d2l.ai/chapter_recurrent-modern/seq2seq.html
 
 ```python
 import torch
@@ -189,7 +187,7 @@ encoder_decoder.eval()
     )
 
 
-![an image alt text]({{ site.baseurl }}/images/Seq2Seq_simple_architecture.png "xxx"){:height="25%" width="80%"} |
+![an image alt text]({{ site.baseurl }}/images/Seq2Seq_simple_architecture.png "xxx"){:height="100%" width="100%"} |
 
 
 ## Allow parts of sequence to be masked as we have variable length sequences
@@ -437,7 +435,7 @@ plt.plot(X, cum_losses)
 plt.show()
 ```
 
-![an image alt text]({{ site.baseurl }}/images/Seq2Seq_simple_training.png "xxx"){:height="25%" width="80%"} |
+![an image alt text]({{ site.baseurl }}/images/Seq2Seq_simple_training.png "xxx"){:height="80%" width="80%"} |
     
 
 
