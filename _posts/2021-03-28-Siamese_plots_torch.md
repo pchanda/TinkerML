@@ -321,7 +321,7 @@ show_plot(counter,loss_history)
 
 
     
-![an image alt text]({{ site.baseurl }}/images/ooutput_14_0.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_14_0.png "xxx"){:height="40%" width="40%"}    
 
 
 ## Visualize dynamic graph
@@ -331,13 +331,8 @@ show_plot(counter,loss_history)
 make_dot(loss_contrastive)
 ```
 
-    Warning: Could not load "/opt/conda/lib/graphviz/libgvplugin_pango.so.6" - file not found
 
-
-
-
-
-![an image alt text]({{ site.baseurl }}/images/ooutput_16_1.svg "xxx"){:height="100%" width="100%"} |    
+![an image alt text]({{ site.baseurl }}/images/oooutput_16_1.svg "xxx"){:height="100%" width="100%"} |    
 
 
 
@@ -380,16 +375,16 @@ for i in range(10):
 
 
     
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_0.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_1.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_2.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_3.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_4.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_5.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_6.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_7.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_8.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/ooutput_20_9.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_0.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_1.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_2.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_3.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_4.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_5.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_6.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_7.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_8.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_9.png "xxx"){:height="100%" width="100%"}    
 
 
 
