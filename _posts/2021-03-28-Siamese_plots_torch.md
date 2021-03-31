@@ -332,7 +332,7 @@ make_dot(loss_contrastive)
 ```
 
 
-![an image alt text]({{ site.baseurl }}/images/oooutput_16_1.svg "xxx"){:height="100%" width="100%"} |    
+![an image alt text]({{ site.baseurl }}/images/oooutput_16_1.svg "xxx"){:height="50%" width="50%"} |    
 
 
 
@@ -375,16 +375,16 @@ for i in range(10):
 
 
     
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_0.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_1.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_2.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_3.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_4.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_5.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_6.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_7.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_8.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/oooutput_20_9.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_0.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_1.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_2.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_3.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_4.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_5.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_6.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_7.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_8.png "xxx"){:height="50%" width="50%"}    
+![an image alt text]({{ site.baseurl }}/images/oooutput_20_9.png "xxx"){:height="50%" width="50%"}    
 
 
 
