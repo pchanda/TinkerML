@@ -332,7 +332,7 @@ make_dot(loss_contrastive)
 ```
 
 
-![an image alt text]({{ site.baseurl }}/images/oooutput_16_1.svg "xxx"){:height="50%" width="50%"} |    
+![an image alt text]({{ site.baseurl }}/images/oooutput_16_1.svg "xxx"){:height="50%" width="70%"} |    
 
 
 
