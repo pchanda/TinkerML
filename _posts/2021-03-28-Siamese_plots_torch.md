@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Siamese Network using pytorch with simulated scatter plot data.
+title: Siamese Network using Pytorch with simulated scatter plot data.
 categories: ['DeepLearning','Pytorch']
 ---
 
@@ -9,12 +9,10 @@ categories: ['DeepLearning','Pytorch']
 
 [FullNotebook for the same using torch dataloader](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_plots_with_dataloader.ipynb)
 
-Both the notebooks use the following data. 
+Both the notebooks use the following data: [DataUsed](https://github.com/pchanda/pchanda.github.io/tree/master/data/mol_data)
 
-[DataUsed](https://github.com/pchanda/pchanda.github.io/tree/master/data/mol_data)
-
-The same should also work with a smaller version of MNIST data, see [MnistNotebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_mnist.ipynb)
-and data [MNISTSmall](https://github.com/pchanda/pchanda.github.io/blob/master/data/mnist_small.tar.gz)
+The same should also work with a smaller version of MNIST data, see ["MnistNotebook"](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_mnist.ipynb)
+and data ["MNISTSmall"](https://github.com/pchanda/pchanda.github.io/blob/master/data/mnist_small.tar.gz)
 
 
 ```python
