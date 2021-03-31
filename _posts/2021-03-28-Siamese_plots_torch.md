@@ -5,14 +5,16 @@ categories: ['DeepLearning','Pytorch']
 ---
 
 
-[Full Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_plots.ipynb)
-[Full Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_plots_with_dataloader.ipynb)
+[FullNotebook for this post](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_plots.ipynb)
 
-These use the following data. 
-[Data used](https://github.com/pchanda/pchanda.github.io/tree/master/data/mol_data)
+[FullNotebook for the same using torch dataloader](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_plots_with_dataloader.ipynb)
 
-The same should also work with a smaller version of MNIST data, see[Mnist notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_mnist.ipynb)
-and data [MNIST small](https://github.com/pchanda/pchanda.github.io/blob/master/data/mnist_small.tar.gz)
+Both the notebooks use the following data. 
+
+[DataUsed](https://github.com/pchanda/pchanda.github.io/tree/master/data/mol_data)
+
+The same should also work with a smaller version of MNIST data, see [MnistNotebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_mnist.ipynb)
+and data [MNISTSmall](https://github.com/pchanda/pchanda.github.io/blob/master/data/mnist_small.tar.gz)
 
 
 ```python
@@ -321,7 +323,7 @@ show_plot(counter,loss_history)
 
 
     
-![an image alt text]({{ site.baseurl }}/images/output_14_0.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_14_0.png "xxx"){:height="100%" width="100%"}    
 
 
 ## Visualize dynamic graph
@@ -337,7 +339,7 @@ make_dot(loss_contrastive)
 
 
 
-![an image alt text]({{ site.baseurl }}/images/output_16_1.svg "xxx"){:height="100%" width="100%"} |    
+![an image alt text]({{ site.baseurl }}/images/ooutput_16_1.svg "xxx"){:height="100%" width="100%"} |    
 
 
 
@@ -380,16 +382,16 @@ for i in range(10):
 
 
     
-![an image alt text]({{ site.baseurl }}/images/output_20_0.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_1.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_2.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_3.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_4.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_5.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_6.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_7.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_8.png "xxx"){:height="100%" width="100%"}    
-![an image alt text]({{ site.baseurl }}/images/output_20_9.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_0.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_1.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_2.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_3.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_4.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_5.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_6.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_7.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_8.png "xxx"){:height="100%" width="100%"}    
+![an image alt text]({{ site.baseurl }}/images/ooutput_20_9.png "xxx"){:height="100%" width="100%"}    
 
 
 
