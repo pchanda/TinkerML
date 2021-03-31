@@ -4,6 +4,10 @@ title: Siamese network in keras to detect pairs of scatter plots that are simila
 categories: ['DeepLearning','Keras']
 ---
 
+[Full Notebook](https://github.com/pchanda/pchanda.github.io/blob/master/data/Siamese_keras.ipynb)
+
+[Data used](https://github.com/pchanda/pchanda.github.io/tree/master/data/mol_data)
+
 
 ```python
 import numpy as np
