@@ -4,7 +4,7 @@ title: Using Roberta classification head for fine-tuning a pre-trained model
 categories: ['DeepLearning','Pytorch','NLP', 'Huggingface', 'BERT']
 ---
 
-An example to show how we can use Huggingface Roberta Model for fine-tuning a classification task based on a pre-trained model. The task involves binary classification of smiles representation of molecules. 
+An example to show how we can use Huggingface Roberta Model for fine-tuning a classification task starting from a pre-trained model. The task involves binary classification of smiles representation of molecules. 
 
 ```python
 import os
