@@ -459,7 +459,7 @@ def print_confusion_matrix(result):
     print('---------------------------------------------------')
 ```
 
-## Training and Evaluation
+## Lets do the training and evaluation
 
 
 ```python
