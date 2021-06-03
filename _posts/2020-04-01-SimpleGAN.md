@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple Generative Adversarial Network 
-categories: ['Keras, 'DeepLearning','GAN']
+categories: ['Keras', 'DeepLearning','GAN']
 ---
 
 Simple Generative Adversarial Network to generate datapoints from a simple one-dimensional function
