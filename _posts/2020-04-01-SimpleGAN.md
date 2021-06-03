@@ -236,7 +236,7 @@ def evaluate(epoch, generator, discriminator, latent_dim, n=100):
 ```
 ### Training process diagram
 
-![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="500px" width="1100px"} |
+![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="700px" width="1400px"} |
 
 ```python
 n_epochs=30000
