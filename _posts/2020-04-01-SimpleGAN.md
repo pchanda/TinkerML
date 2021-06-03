@@ -4,8 +4,8 @@ title: Simple Generative Adversarial Network
 categories: ['DeepLearning','Keras','GAN']
 ---
 
-Simple Generative Adversarial Network to generate datapoints from a simple one-dimensional function 
-(adapted from https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/) 
+Simple Generative Adversarial Network to generate datapoints from a simple one-dimensional function
+(adapted from https://machinelearningmastery.com/how-to-develop-a-generative-adversarial-network-for-a-1-dimensional-function-from-scratch-in-keras/).
 
 
 ```python
