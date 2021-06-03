@@ -208,7 +208,7 @@ plt.scatter(X[:,0],X[:,1])
 
 ![an image alt text]({{ site.baseurl }}/images/SimpleGAN/output_12_1.png "xxx"){:height="100%" width="100%"} |
 
-
+## Do some training
 
 ```python
 # evaluate the discriminator and plot real and fake points
