@@ -234,8 +234,9 @@ def evaluate(epoch, generator, discriminator, latent_dim, n=100):
     plt.scatter(x_fake[:, 0], x_fake[:, 1], color='blue')
     plt.show()
 ```
+### Training process diagram
 
-![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="800px" width="500px"} |
+![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="500px" width="800px"} |
 
 ```python
 n_epochs=30000
