@@ -144,7 +144,7 @@ generator_model = build_generator(input_shape,output_shape)
 gan_model = build_gan(generator_model, discriminator_model,input_shape)
 ```
 
-## Generate real and fake data
+## Generate some real and fake data
 
 
 ```python
@@ -235,7 +235,7 @@ def evaluate(epoch, generator, discriminator, latent_dim, n=100):
     plt.show()
 ```
 
-![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="60%" width="100%"} |
+![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="25%" width="50%"} |
 
 ```python
 n_epochs=30000
