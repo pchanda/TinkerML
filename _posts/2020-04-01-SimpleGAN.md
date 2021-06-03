@@ -235,7 +235,7 @@ def evaluate(epoch, generator, discriminator, latent_dim, n=100):
     plt.show()
 ```
 
-![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="100%" width="100%"} |
+![an image alt text]({{ site.baseurl }}/images/SimpleGAN/SimpleGAN.png "xxx"){:height="60%" width="100%"} |
 
 ```python
 n_epochs=30000
